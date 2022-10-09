@@ -1,0 +1,142 @@
+/* Specificity : https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity */
+
+:root {
+  --healthpercent: 100%;
+  --new_healthpercent: 100%;
+  --manapercent: 100%;
+  --new_manapercent: 100%;
+}
+
+@font-face {
+  font-family: Alagard;
+  src: url(../font/alagard.ttf);
+}
+
+.actionbutton:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.actionbutton:active {
+  transform: translateY(2px);
+}
+
+.hpanimation {
+  animation: hp-animation 3s;
+}
+
+.mpanimation {
+  animation: mp-animation 3s;
+}
+
+@keyframes hp-animation {
+  from {
+    width: var(--healthpercent);
+  }
+  to {
+    width: var(--new_healthpercent);
+  }
+}
+
+@keyframes mp-animation {
+  from {
+    width: var(--manapercent);
+  }
+  to {
+    width: var(--new_manapercent);
+  }
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px solid black;
+}
+
+.tooltiptext {
+  white-space: pre-line;
+  font-size: 1rem;
+  color: darkslategray;
+  text-align: left;
+  font-family: Alagard;
+}
+
+.tooltip .tooltipbox {
+  visibility: hidden;
+  width: 18rem;
+  /* background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 6px; */
+  padding: 1.2rem 0.8rem 0.8rem 0.8rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip:hover .tooltipbox {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+button {
+  padding: 10px;
+  color: rgba(207, 50, 50, 0.822);
+  font-weight: bold;
+  background-color: aquamarine;
+  box-shadow: 3px 3px rgba(207, 50, 50, 0.39);
+}
+
+button:hover {
+  background-color: pink;
+}
+
+button:active {
+  box-shadow: 1.5 1.5px rgba(207, 50, 50, 0.39);
+  transform: translateY(1.5px);
+}
+
+
+*/
