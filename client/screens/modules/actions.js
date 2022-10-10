@@ -12,7 +12,7 @@ const $actions = () => {
     height: "100%",
     color: "ghostwhite",
     "background-color": "rgba(255,255,255,0)",
-    "font-size": "1.5rem",
+    "font-size": "1.5vw",
     "text-align": "center",
     border: "none",
     "font-family": "Alagard",

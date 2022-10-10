@@ -32,8 +32,12 @@ const player = {
   },
   skills: [1],
   status: [],
-  img_src: 'image_data/players/Arms_Warrior.png',
+  img_src: "image_data/players/Arms_Warrior.png",
   img_size: ["10%", "35%"],
+  x_pos: "-256px", //  Position in sprite sheet
+  y_pos: "0px", //  Position in sprite sheet
+  scale: [1, 1], // Image size
+  img_translate: ["0%", "0%"], //  Img adjustment
 };
 
 export default player;

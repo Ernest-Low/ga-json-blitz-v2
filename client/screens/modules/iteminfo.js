@@ -45,7 +45,7 @@ const iteminfo = {
       .css({
         color: "ghostwhite",
         "font-family": "Alagard",
-        "font-size": "2rem",
+        "font-size": "2vw",
         "text-align": "center",
       })
       .text(`${obj.name}`)
@@ -61,8 +61,8 @@ const iteminfo = {
           })
           .append(
             $("<div>").css({
-              width: "10rem",
-              height: "10rem",
+              width: "10vw",
+              height: "10vw",
               "background-image": `url("/assets/${obj.img_src}")`,
               "background-size": "100% 100%",
               "background-repeat": "no-repeat",

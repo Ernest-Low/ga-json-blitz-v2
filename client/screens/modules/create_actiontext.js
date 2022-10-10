@@ -6,7 +6,7 @@ const create_actionText = () => {
     .css({
       color: "ghostwhite",
       "font-family": "Alagard",
-      "font-size": "2rem",
+      "font-size": "2vw",
       "word-wrap": "break-word",
     })
     .text("");

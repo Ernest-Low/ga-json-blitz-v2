@@ -9,7 +9,7 @@ const character_info = (entity) => {
     .css({
       color: "ghostwhite",
       "font-family": "Alagard",
-      "font-size": "1rem",
+      "font-size": "1vw",
       "white-space": "nowrap",
     });
 
@@ -19,7 +19,7 @@ const character_info = (entity) => {
   //* HP Box
   //  HP Progress Bar
   const $hpbar = $("<div>").attr("id", `${entity.id}hpbar`).css({
-    height: "0.5rem",
+    height: "0.5vw",
     width: "100%",
     "border-radius": "0.5rem",
     "background-color": "rgba(255,0,0,1)",
@@ -30,8 +30,8 @@ const character_info = (entity) => {
     .attr("id", `${entity.id}hpbarcover`)
     .css({
       "background-color": "	rgba(230, 255, 204, 1)",
-      height: "0.5rem",
-      width: "4rem",
+      height: "0.5vw",
+      width: "4vw",
       "border-radius": "1rem",
     })
     .append($hpbar);
@@ -43,7 +43,7 @@ const character_info = (entity) => {
     .css({
       color: "rgba(255,0,0,1)",
       // width: "5rem",
-      padding: "0 0.5rem 0 0",
+      padding: "0 0.5vw 0 0",
       "text-align": "right",
     });
 
@@ -63,8 +63,8 @@ const character_info = (entity) => {
       .css({
         "background-color": "rgba(0,0,0,0.5)",
         "border-radius": "1rem",
-        padding: "1rem",
-        "font-size": "0.7rem",
+        padding: "0.5vw",
+        "font-size": "0.7vw",
         display: "flex",
         "flex-direction": "column",
       })
@@ -76,9 +76,9 @@ const character_info = (entity) => {
   //*  MP Box
   //  MP Progress Bar
   const $mpbar = $("<div>").attr("id", `${entity.id}mpbar`).css({
-    height: "0.5rem",
+    height: "0.5vw",
     width: "100%",
-    "border-radius": "0.5rem",
+    "border-radius": "0.5vw",
     "background-color": "rgba(0,0,255,1)",
   });
 
@@ -87,8 +87,8 @@ const character_info = (entity) => {
     .attr("id", `${entity.id}mpbarcover`)
     .css({
       "background-color": "	rgba(230, 255, 204, 1)",
-      height: "0.5rem",
-      width: "4rem",
+      height: "0.5vw",
+      width: "4vw",
       "border-radius": "1rem",
     })
     .append($mpbar);
@@ -100,7 +100,7 @@ const character_info = (entity) => {
     .css({
       color: "rgba(0,0,255,1)",
       // width: "5rem",
-      padding: "0 0.5rem 0 0",
+      padding: "0 0.5vw 0 0",
       "text-align": "right",
     });
 
@@ -120,7 +120,7 @@ const character_info = (entity) => {
     .css({
       display: "flex",
       "flex-direction": "column",
-      gap: "0.33rem",
+      gap: "0.33vw",
     })
     .append($hpbarcover, $mpbarcover);
 
@@ -141,8 +141,8 @@ const character_info = (entity) => {
     .css({
       "background-color": "rgba(0,0,0,0.5)",
       "border-radius": "1rem",
-      padding: "1rem",
-      "font-size": "0.7rem",
+      padding: "0.8vw",
+      "font-size": "0.7vw",
       display: "flex",
       "flex-direction": "column",
     })

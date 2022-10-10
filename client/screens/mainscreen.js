@@ -3,7 +3,7 @@ import player from "../data_files/data_player.js";
 import zones from "../data_files/data_zone";
 import create_battle from "./modules/create_battle";
 
-import background_img from "/assets/image_data/backgrounds/Game_Landing_Page.png";
+import background_img from "/assets/Game_Landing_Page.png";
 
 //* Render Mainscreen (Aka main)
 const mainScreen = () => {
@@ -12,7 +12,10 @@ const mainScreen = () => {
     $("<div>").attr("id", "blackscreen").css({
       "z-index": -1,
       width: "80vw",
-      height: "95vh",
+      "aspect-ratio": "16 / 9",
+      overflow: "hidden",
+      // "padding-top": "56.25%",
+      // height: "95vh",
       border: "4px solid blue",
       position: "absolute",
       "background-color": "rgba(0,0,0,1)",
@@ -33,7 +36,8 @@ const mainScreen = () => {
       "background-repeat": "no-repeat",
       "object-fit": "fill",
       width: "80vw",
-      height: "95vh",
+      "aspect-ratio": "16 / 9",
+      // height: "95vh",
       border: "4px solid blue",
       overflow: "hidden",
       position: "absolute",
@@ -44,8 +48,8 @@ const mainScreen = () => {
     display: "flex",
     "flex-direction": "column",
     "z-index": 2,
-    width: "20vw",
-    height: "20vh",
+    width: "20%",
+    height: "20%",
     overflow: "hidden",
   });
 
@@ -59,7 +63,7 @@ const mainScreen = () => {
     .css({
       color: "white",
       "background-color": "rgba(0,0,0,0.8)",
-      "font-size": "1.5rem",
+      "font-size": "1.5vw",
       width: "100%",
       height: "25%",
       "font-family": "Alagard",
@@ -73,7 +77,7 @@ const mainScreen = () => {
     .css({
       color: "white",
       "background-color": "rgba(0,0,0,0.8)",
-      "font-size": "1.5rem",
+      "font-size": "1.5vw",
       width: "100%",
       height: "25%",
       "font-family": "Alagard",
@@ -102,7 +106,7 @@ const mainScreen = () => {
     .css({
       color: "white",
       "background-color": "rgba(0,0,0,0.8)",
-      "font-size": "1.5rem",
+      "font-size": "1.5vw",
       width: "100%",
       height: "25%",
       "font-family": "Alagard",

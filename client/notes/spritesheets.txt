@@ -1,0 +1,3 @@
+Spritesheets problem
+
+> Gifs cant be arranged into sprite sheets maybe?

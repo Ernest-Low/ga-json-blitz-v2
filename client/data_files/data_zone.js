@@ -26,14 +26,14 @@ const zones = {
   },
   castle: {
     name: "Castle",
-    name2: "castle",
     id: 3,
     level_range: [1, 3],
-    enemy_type: [1, 2, 3, 4, 5],
+    enemy_type: [1],
+    // enemy_type: [1, 2, 3, 4, 5],
     enemy_count: 8,
     random_zone: true,
     random_count: 18,
-    img_src: "castle_",
+    // img_src: "castle_",
   },
 };
 

@@ -11,6 +11,8 @@ const zoneSchema = new mongoose.Schema(
     random_zone: {type: Boolean, default: true },
     random_count: {type: Number, required: true },  // How many zone pictures are there
     img_src: { type: String, required: true },  //  URL of image - client will go through stored sprite sheet of backgrounds
+    x_pos: { type: Number, required: true }, //  Position in sprite sheet
+    y_pos: { type: Number, required: true }, //  Position in sprite sheet
   },
   { timestamps: true }
 );

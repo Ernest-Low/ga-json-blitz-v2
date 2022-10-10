@@ -4,6 +4,8 @@ import $actionText from "./modules/actionText.js";
 import create_actionText from "./modules/create_actiontext.js";
 import $entity_window from "./modules/entity.js";
 
+import castlebg from "/assets/spritesheets/castlebg_sheet.png";
+
 //* Render Battle Screen (Fighting scene)
 const battleScreen = () => {
   //  Battlescreen Window
@@ -12,34 +14,43 @@ const battleScreen = () => {
     "flex-direction": "column",
     "z-index": 1,
     width: "80vw",
-    height: "95vh",
+    "aspect-ratio": "16 / 9",
+    // height: "95vh",
     border: "4px solid blue",
     overflow: "hidden",
     position: "absolute",
   });
 
   //  Top scene
-  const $battlescene = $("<div>").attr("id", "battlescene").css({
-    width: "100%",
-    height: "75%",
-    "background-image": `url("/assets/${current_entities.zone.img_src}")`,
-    "background-size": "100% 100%",
-    "background-repeat": "no-repeat",
-    "object-fit": "fill",
-    "z-index": 2,
-    display: "flex",
-    "align-items": "flex-end",
-    "justify-content": "space-evenly",
-    "flex-direction": "row",
-  });
+  const $battlescene = $("<div>")
+    .attr("id", "battlescene")
+    .css({
+      width: "100%",
+      height: "75%",
+      // "background-image": `url("${castlebg}")`,
+      "background-size": "100% 1800%",
+      // "background-position": "0% 17.65%",
+      "z-index": 2,
+      display: "flex",
+      "align-items": "flex-end",
+      "justify-content": "space-evenly",
+      "flex-direction": "row",
+    });
+
+  switch (current_entities.zone.name) {
+    case "Castle":
+      $battlescene.css({
+        "background-image": `url("${castlebg}")`,
+      });
+      break;
+  }
 
   if (current_entities.zone.random_zone) {
-    let random_zone = Math.ceil(
-      Math.random() * current_entities.zone.random_count
-    );
-    random_zone = `url("/assets/image_data/backgrounds/${current_entities.zone.name2}/${current_entities.zone.img_src}${random_zone}.png")`;
+    let random_zone =
+      Math.floor(current_entities.zone.random_count * Math.random()) *
+      (100 / (current_entities.zone.random_count - 1));
     $battlescene.css({
-      "background-image": random_zone,
+      "background-position": `0% ${random_zone}%`,
     });
   }
 
@@ -72,7 +83,7 @@ const battleScreen = () => {
     "background-size": "100% 100%",
     "background-repeat": "no-repeat",
     "object-fit": "fill",
-    padding: "0rem 2.5rem 0rem 2.5rem",
+    padding: "0vh 2.5vw 0vh 2.5vw",
   });
 
   // //  Bottom Left Panel (textbox)

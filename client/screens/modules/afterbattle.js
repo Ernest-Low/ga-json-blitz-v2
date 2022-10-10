@@ -123,7 +123,8 @@ const afterBattle = {
       "background-repeat": "no-repeat",
       "object-fit": "fill",
       width: "80vw",
-      height: "95vh",
+      "aspect-ratio": "16 / 9",
+      // height: "95vh",
       border: "4px solid blue",
       overflow: "hidden",
     });
@@ -137,7 +138,7 @@ const afterBattle = {
     const $title = $("<h1>").attr("id", "aftertitle").css({
       color: "ghostwhite",
       "font-family": "Alagard",
-      "font-size": "4rem",
+      "font-size": "4vw",
     });
     // .text(status);
     $aftertop.append($title);
@@ -179,7 +180,7 @@ const afterBattle = {
       "align-items": "center",
       "justify-content": "space-around",
       width: "90%",
-      height: "8rem",
+      height: "8vw",
     });
 
     //  Add gold
@@ -191,7 +192,7 @@ const afterBattle = {
       .css({
         color: "ghostwhite",
         "font-family": "Alagard",
-        "font-size": "3rem",
+        "font-size": "3vw",
         "word-wrap": "break-word",
         "text-align": "center",
       })
@@ -232,7 +233,7 @@ const afterBattle = {
         .css({
           color: "ghostwhite",
           "font-family": "Alagard",
-          "font-size": "3rem",
+          "font-size": "3vw",
           "word-wrap": "break-word",
           "text-align": "center",
         })
@@ -278,7 +279,7 @@ const afterBattle = {
       .css({
         color: "ghostwhite",
         "font-family": "Alagard",
-        "font-size": "3rem",
+        "font-size": "3vw",
         "word-wrap": "break-word",
         "text-align": "center",
       })
@@ -291,7 +292,7 @@ const afterBattle = {
           .css({
             color: "ghostwhite",
             "font-family": "Alagard",
-            "font-size": "3rem",
+            "font-size": "3vw",
             "word-wrap": "break-word",
             "text-align": "center",
           })
@@ -334,7 +335,7 @@ const afterBattle = {
             height: "100%",
             color: "ghostwhite",
             "background-color": "rgba(255,255,255,0)",
-            "font-size": "1.5rem",
+            "font-size": "1.5vw",
             "text-align": "center",
             border: "none",
             "font-family": "Alagard",
@@ -372,7 +373,7 @@ const afterBattle = {
             height: "100%",
             color: "ghostwhite",
             "background-color": "rgba(255,255,255,0)",
-            "font-size": "1.5rem",
+            "font-size": "1.5vw",
             "text-align": "center",
             border: "none",
             "font-family": "Alagard",
@@ -402,7 +403,7 @@ const afterBattle = {
             height: "100%",
             color: "ghostwhite",
             "background-color": "rgba(255,255,255,0)",
-            "font-size": "1.5rem",
+            "font-size": "1.5vw",
             "text-align": "center",
             border: "none",
             "font-family": "Alagard",
