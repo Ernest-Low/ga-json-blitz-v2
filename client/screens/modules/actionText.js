@@ -1,4 +1,5 @@
 //!  Typewriter text control
+import $ from "jquery";
 
 const $actionText = (inputtext, time, window = $("#actiontext")) => {
   //  Text input

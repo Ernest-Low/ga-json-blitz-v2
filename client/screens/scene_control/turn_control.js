@@ -2,7 +2,7 @@
 //? Speed stat to affect in future? Will need to calculate whos turn is it next
 //* Set timeouts when called to next action / unlock buttons when it's player's turn
 //  Also good place to trigger buffs / debuff effects
-
+import $ from "jquery";
 import current_entities from "../entities";
 import enemyAttack from "./enemyattack";
 import $actionText from "../modules/actionText.js";

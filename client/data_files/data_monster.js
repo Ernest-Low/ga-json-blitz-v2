@@ -41,7 +41,7 @@ const monsters = [
     status: [],
     img_src: "monster_sheet_1",  //  Reference which sheet to be used
     img_size: ["8.5%", "30%"],
-    sprite_pos: [1, 1], //  Spritesheet position
+    sprite_pos: ["0%", "0%"], //  Spritesheet position
     scale: [2.5, 2.5], //  Image size
     img_translate: ["0%", "0%"], //  Img adjustment
   },

@@ -3,7 +3,7 @@
 //? First stage, declare overall victory if cleared
 
 //* Use after keywords for ids
-
+import $ from "jquery";
 import current_entities from "../entities.js";
 import items from "../../data_files/data_items.js";
 import iteminfo from "./iteminfo.js";

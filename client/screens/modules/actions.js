@@ -1,5 +1,6 @@
 //*  Actions window
 //! Attack, Skills, Items, Run
+import $ from "jquery";
 import player_actions from "../scene_control/playeractions.js";
 import current_entities from "../entities.js";
 import actionSkills from "./actionSkills.js";

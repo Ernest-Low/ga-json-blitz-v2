@@ -1,5 +1,7 @@
 //!  Animate the infobox above character head to new hp/mp values
 
+import $ from "jquery";
+
 const update_hpmp = (entity, hpcost, mpcost) => {
   //  Variable declarations
   const new_hp = entity.health - hpcost;

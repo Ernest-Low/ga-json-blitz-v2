@@ -1,4 +1,5 @@
 //! Create the infobox above character head in battle screen
+import $ from "jquery";
 
 const character_info = (entity) => {
   //  Name

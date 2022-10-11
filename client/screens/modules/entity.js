@@ -1,12 +1,10 @@
 //!  Render character into scene
-
+import $ from "jquery";
 import character_info from "./infobox.js";
 import monster_sheet_1 from "/assets/spritesheets/monster_sheet_1.png";
+import character_sheet_1 from "/assets/spritesheets/characters_sheet_1.png";
 
 const $entity_window = (entity) => {
-  //* Spritesheet constants
-  const monster_sheet_1_length = 37;
-
   // const player1 = current_entities.players[0];
   const $infobox = character_info(entity);
 
@@ -15,14 +13,29 @@ const $entity_window = (entity) => {
     .css({
       width: "100%",
       height: "60%",
-      "background-image": `url("${monster_sheet_1}")`,
-      "background-size": "700% 600%",
-      "background-position": "0% 0%",
       scale: `${entity.scale[0]} ${entity.scale[1]}`,
       translate: `${entity.img_translate[0]} ${entity.img_translate[1]}`,
-
     });
 
+  //* Spritesheet assignment
+  switch (entity.img_src) {
+    case "monster_sheet_1":
+      $image.css({
+        "background-image": `url("${monster_sheet_1}")`,
+        "background-size": "700% 600%",
+        "background-position": `${entity.sprite_pos[0]} ${entity.sprite_pos[1]}`,
+      });
+      break;
+    case "character_sheet_1":
+      $image.css({
+        "background-image": `url("${character_sheet_1}")`,
+        "background-size": "500% 500%",
+        "background-position": `${entity.sprite_pos[0]} ${entity.sprite_pos[1]}`,
+      });
+      break;
+    default:
+      break;
+  }
 
   const $entitybox = $("<div>")
     .attr("id", `${entity.id}box`)

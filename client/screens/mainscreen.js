@@ -1,7 +1,9 @@
+import $ from "jquery";
 import current_entities from "./entities";
 import player from "../data_files/data_player.js";
 import zones from "../data_files/data_zone";
 import create_battle from "./modules/create_battle";
+import $account from "./modules/account";
 
 import background_img from "/assets/Game_Landing_Page.png";
 
@@ -51,6 +53,7 @@ const mainScreen = () => {
     width: "20%",
     height: "20%",
     overflow: "hidden",
+    margin: "0 0 2.5% 0",
   });
 
   const $inputname = $("<input>")
@@ -75,12 +78,12 @@ const mainScreen = () => {
     .attr("id", "btnmainstart")
     .text("Start")
     .css({
-      color: "white",
       "background-color": "rgba(0,0,0,0.8)",
+      color: "white",
       "font-size": "1.5vw",
+      "font-family": "Alagard",
       width: "100%",
       height: "25%",
-      "font-family": "Alagard",
     })
     .on("click", () => {
       console.log("Start Clicked");
@@ -113,9 +116,36 @@ const mainScreen = () => {
     })
     .on("click", () => console.log("Settings Clicked"));
 
+  const $login = $("<button>")
+    .attr("id", "btnmainsettings")
+    .text("Login / Register")
+    .css({
+      color: "white",
+      "background-color": "rgba(0,0,0,0.8)",
+      "font-size": "1.5vw",
+      width: "100%",
+      height: "25%",
+      "font-family": "Alagard",
+    })
+    .on("click", () => {
+      console.log("Login Clicked");
+      if (current_entities.account_window == false) {
+        $account();
+        current_entities.account_window = true;
+      }
+    });
+
+  $(document).on("keydown", (e) => {
+    if (e.key == "Escape" && current_entities.account_window == true) {
+      console.log("Remove register/login window");
+      $("#account_window").remove();
+      current_entities.account_window = false;
+    }
+  });
+
   $("body").append($mainscreen);
   $("#mainscreen").append($textbox);
-  $("#maintextbox").append($inputname, $gamestart, $gamesettings);
+  $("#maintextbox").append($inputname, $gamestart, $login, $gamesettings);
 };
 
 export default mainScreen;

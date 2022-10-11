@@ -2,12 +2,16 @@
 
 //* Try overflow:auto to make scrollable div?
 //  https://www.youtube.com/watch?v=v_8CmC6cwUs
+import $ from "jquery";
 import player_actions from "../scene_control/playeractions.js";
 import current_entities from "../entities";
 import skills_list from "../../data_files/data_skills";
 import create_actionText from "./create_actiontext";
 import items from "../../data_files/data_items.js";
 import $actionText from "./actionText.js";
+
+import redrectangle from "/assets/ui/redrectangle.png";
+
 
 const actionSkills = () => {
   const skillscontainer = $("<div>").attr("id", "skillscontainer").css({
@@ -38,7 +42,7 @@ const actionSkills = () => {
       .css({
         width: "30%",
         height: "30%",
-        "background-image": `url("/assets/image_data/modules/Buttons/redrectangle.png")`,
+        "background-image": `url("${redrectangle}")`,
         "background-size": "100% 100%",
         "background-repeat": "no-repeat",
         "object-fit": "contain",

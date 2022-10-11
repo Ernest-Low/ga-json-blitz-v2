@@ -3,8 +3,11 @@ import $actions from "./modules/actions.js";
 import $actionText from "./modules/actionText.js";
 import create_actionText from "./modules/create_actiontext.js";
 import $entity_window from "./modules/entity.js";
+import $ from "jquery";
 
 import castlebg from "/assets/spritesheets/castlebg_sheet.png";
+import actionpanel from "/assets/ui/4buttons.png";
+import longpanel from "/assets/ui/largehpanel.png";
 
 //* Render Battle Screen (Fighting scene)
 const battleScreen = () => {
@@ -27,9 +30,6 @@ const battleScreen = () => {
     .css({
       width: "100%",
       height: "75%",
-      // "background-image": `url("${castlebg}")`,
-      "background-size": "100% 1800%",
-      // "background-position": "0% 17.65%",
       "z-index": 2,
       display: "flex",
       "align-items": "flex-end",
@@ -41,6 +41,7 @@ const battleScreen = () => {
     case "Castle":
       $battlescene.css({
         "background-image": `url("${castlebg}")`,
+        "background-size": "100% 1800%",
       });
       break;
   }
@@ -69,7 +70,7 @@ const battleScreen = () => {
   const $actionpanel = $("<div>").attr("id", "actionpanel").css({
     width: "35%",
     height: "100%",
-    "background-image": `url("/assets/image_data/modules/Panels/4buttons.png")`,
+    "background-image": `url("${actionpanel}")`,
     "background-size": "100% 100%",
     "background-repeat": "no-repeat",
     "object-fit": "fill",
@@ -79,7 +80,7 @@ const battleScreen = () => {
   const $longpanel = $("<div>").attr("id", "longpanel").css({
     width: "65%",
     height: "100%",
-    "background-image": `url("/assets/image_data/modules/Panels/largehpanel.png")`,
+    "background-image": `url("${longpanel}")`,
     "background-size": "100% 100%",
     "background-repeat": "no-repeat",
     "object-fit": "fill",

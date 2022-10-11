@@ -20,13 +20,15 @@ app.use(express.static("./client/dist/"));
 app.use(cors(corsOptions));
 app.use(express.json());
 
-
 //? Do not copy whole objects in for post/put - only the required fields (to prevent unauthorized editing of data)
 
-
 //* Test / Homepage - show popular deals default
-app.get("/", async (req, res) => {
-  res.status(200).send({status: 200, payload: "Hello"})
+app.post("/api/login", async (req, res) => {
+  res.status(200).send({ status: 200, payload: "Login api" });
+});
+
+app.post("/api/register", async (req, res) => {
+  res.status(200).send({ status: 200, payload: "Register api" });
 });
 
 // app.get("/:id", async (req, res) => {

@@ -9,6 +9,8 @@
 
 //! Maybe add a method to return the wrapping item too?
 
+import $ from "jquery";
+
 const iteminfo = {
   //* Item name & tooltip
   item_link: function (obj) {

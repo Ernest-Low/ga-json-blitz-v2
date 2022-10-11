@@ -1,4 +1,5 @@
 //  Creates the actionText module into the longpanel
+import $ from "jquery";
 
 const create_actionText = () => {
   const $textpanel = $("<h4>")

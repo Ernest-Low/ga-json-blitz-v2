@@ -2,7 +2,7 @@
 import battleScreen from "../battlescreen";
 import zone_control from "../scene_control/zone_control.js";
 import current_fight from "../current_fight";
-import current_entities from "../entities";
+// import current_entities from "../entities";
 
 const create_battle = () => {
   //  Declare new zone (Future)
