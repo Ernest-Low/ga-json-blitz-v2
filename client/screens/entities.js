@@ -5,9 +5,10 @@
 //? Push entities in here.
 
 const current_entities = {
+  username: "",
   players: [],
   gold: 0,
-  items: [2001],
+  items: [2001], //  Should give the healthpot via a different method
   monsters: [],
   zone: {},
   currentplayer: 0,

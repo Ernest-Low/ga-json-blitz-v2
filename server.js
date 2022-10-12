@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 
+const loginController = require("./controllers/LoginController");
+const registerController = require("./controllers/RegisterController");
+
 //configuration
 const PORT = process.env.PORT ?? 3000;
 const MONGO_URI = process.env.MONGO_URI ?? "";
@@ -20,46 +23,15 @@ app.use(express.static("./client/dist/"));
 app.use(cors(corsOptions));
 app.use(express.json());
 
-//? Do not copy whole objects in for post/put - only the required fields (to prevent unauthorized editing of data)
+app.use("/api/login", loginController);
+app.use("/api/register", registerController);
 
-//* Test / Homepage - show popular deals default
-app.post("/api/login", async (req, res) => {
-  res.status(200).send({ status: 200, payload: "Login api" });
-});
-
-app.post("/api/register", async (req, res) => {
-  res.status(200).send({ status: 200, payload: "Register api" });
-});
-
-// app.get("/:id", async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const searchDeal = await Deals.find({
-//       title: { $regex: id, $options: "i" },
-
-//       submittedStatus: "Approve",
-//     });
-//     res.status(201).send(searchDeal);
-//   } catch (error) {
-//     res.status(500).send({ error });
-//   }
+// app.post("/api/login", async (req, res) => {
+//   res.status(200).send({ status: 200, payload: "Login api" });
 // });
 
-// app.get("/profile/:username", async (req, res) => {
-//   const { username } = req.params;
-//   console.log(username, "test");
-//   try {
-//     const publicProfile = await Deals.find(
-//       {
-//         submittedBy: username,
-//         submittedStatus: "Approve",
-//       },
-//       { img: 1, title: 1, submittedBy: 1 }
-//     );
-//     res.status(201).send(publicProfile);
-//   } catch (error) {
-//     res.status(500).send({ error });
-//   }
+// app.post("/api/register", async (req, res) => {
+//   res.status(200).send({ status: 200, payload: "Register api" });
 // });
 
 app.listen(PORT, () => {

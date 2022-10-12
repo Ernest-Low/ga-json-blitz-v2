@@ -1,4 +1,4 @@
-import items from "../../data_files/data_items.js";
+// import items from "../../data_files/data_items.js";
 import update_hpmp from "../modules/update_hpmp.js";
 import $actionText from "../modules/actionText.js";
 import current_entities from "../entities.js";
@@ -22,9 +22,9 @@ const player_actions = {
     } else damage_spill_chance = -1;
     let total_damage =
       multiplier.damage +
-      multiplier.scaling[0] * entity.strength +
-      multiplier.scaling[1] * entity.agility +
-      multiplier.scaling[2] * entity.intelligence +
+      multiplier.scaling_str * entity.strength +
+      multiplier.scaling_agi * entity.agility +
+      multiplier.scaling_int * entity.intelligence +
       damage_spill_chance *
         Math.floor(Math.random() * (multiplier.damage_spill + 1));
 
@@ -72,10 +72,26 @@ const player_actions = {
     }
   },
 
+  //! Temporarily here to calculate full stats from equipment for attacks
+  equipment_stats: function (entity) {
+    const new_entity = structuredClone(entity);
+    new_entity.equipment.forEach((element) => {
+      new_entity.strength += element.strength;
+      new_entity.agility += element.agility;
+      new_entity.intelligence += element.intelligence;
+    });
+    return new_entity;
+  },
+
   //    Basic attack by player
   player_attack: function (entity, target) {
     this.reset_critical();
-    const weapon = items.filter((obj) => obj.id == entity.equipment.weapon)[0];
+    const weapon = entity.equipment.find(
+      (element) =>
+        element.type == "Melee" ||
+        element.type == "Ranged" ||
+        element.type == "Magic"
+    );
     const damage = this.attack_calculation(entity, weapon);
     const damage_total = this.damage_adjustment(
       this.critical_check(entity, damage)
@@ -96,9 +112,9 @@ const player_actions = {
     console.log(damage_spill_chance);
     let spell_damage =
       spell.damage +
-      spell.scaling[0] * entity.strength +
-      spell.scaling[1] * entity.agility +
-      spell.scaling[2] * entity.intelligence +
+      spell.scaling_str * entity.strength +
+      spell.scaling_agi * entity.agility +
+      spell.scaling_int * entity.intelligence +
       damage_spill_chance *
         Math.floor(Math.random() * (spell.damage_spill + 1));
     console.log(`First spell damage calculation: ${spell_damage}`);
@@ -113,30 +129,3 @@ const player_actions = {
 };
 
 export default player_actions;
-
-// {
-//   name: "Power Slash",
-//   id: 1,
-//   health_cost: 0,
-//   mana_cost: 6,
-//   cooldown: 0,
-//   damage: 6,
-//   scaling: [0.5, 0, 0],
-//   damage_spill: 2,
-//   type: "skill",
-//   weapon: "melee",
-//   buff: [],
-//   debuff: [],
-//   cost: 50,
-// }
-
-// {
-//     name: "Rusty Sword",
-//     itemid: 1001,
-//     damage: 6,
-//     damage_spill: 2,
-//     attributes: [0, 0, 0, 0, 0],
-//     scaling: [0.5, 0, 0],
-//     type: "melee",
-//     price: 50,
-//   }

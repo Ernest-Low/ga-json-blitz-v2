@@ -29,9 +29,9 @@ const enemyAttack = {
     } else damage_spill_chance = -1;
     let total_damage =
       entity.damage +
-      entity.scaling[0] * entity.strength +
-      entity.scaling[1] * entity.agility +
-      entity.scaling[2] * entity.intelligence +
+      entity.scaling_str * entity.strength +
+      entity.scaling_agi * entity.agility +
+      entity.scaling_int * entity.intelligence +
       damage_spill_chance *
         Math.floor(Math.random() * (entity.damage_spill + 1));
 
@@ -45,9 +45,9 @@ const enemyAttack = {
     } else damage_spill_chance = -1;
     let total_damage =
       spell.damage +
-      spell.scaling[0] * entity.strength +
-      spell.scaling[1] * entity.agility +
-      spell.scaling[2] * entity.intelligence +
+      spell.scaling_str * entity.strength +
+      spell.scaling_agi * entity.agility +
+      spell.scaling_int * entity.intelligence +
       damage_spill_chance *
         Math.floor(Math.random() * (spell.damage_spill + 1));
 

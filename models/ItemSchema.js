@@ -6,15 +6,21 @@ const itemSchema = new mongoose.Schema(
     id: { type: Number, required: true },
     drop_level: { type: Number, required: true },
     rarity: { type: String, required: true },
-    damage: { type: Number, required: true },
-    damage_spill: { type: Number, required: true },
-    attributes: { type: [Number], default: [0, 0, 0, 0, 0] },
-    scaling: { type: [Number], required: true },
+    damage: { type: Number },
+    damage_spill: { type: Number },
+    potency: { type: Number }, // For potions and other effects
+    strength: { type: Number },
+    agility: { type: Number },
+    intelligence: { type: Number },
+    health: { type: Number },
+    mana: { type: Number },
+    scaling_str: { type: Number },
+    scaling_agi: { type: Number },
+    scaling_int: { type: Number },
     type: { type: String, required: true },
-    // img_src: "image_data/icons/weapons/sword/sword_1.png",  Depreciated, using position in sprite sheet
-    x_pos: { type: Number, required: true },  //  Position in sprite sheet
-    y_pos: { type: Number, required: true },  //  Position in sprite sheet
-    value: { type: Number, required: true },
+    img_src: { type: String, required: true }, //  Link to spritesheet
+    sprite_pos: { type: [Number], required: true }, // Spritesheet Position
+    gold_value: { type: Number, required: true },
   },
   { timestamps: true }
 );

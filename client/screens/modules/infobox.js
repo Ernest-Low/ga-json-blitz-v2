@@ -32,7 +32,8 @@ const character_info = (entity) => {
     .css({
       "background-color": "	rgba(230, 255, 204, 1)",
       height: "0.5vw",
-      width: "4vw",
+      "min-width": "4vw",
+      width: "100%",
       "border-radius": "1rem",
     })
     .append($hpbar);
@@ -89,7 +90,8 @@ const character_info = (entity) => {
     .css({
       "background-color": "	rgba(230, 255, 204, 1)",
       height: "0.5vw",
-      width: "4vw",
+      "min-width": "4vw",
+      width: "100%",
       "border-radius": "1rem",
     })
     .append($mpbar);
@@ -119,6 +121,8 @@ const character_info = (entity) => {
   const $hpmpbars = $("<div>")
     .attr("id", `${entity.id}hpmpbars`)
     .css({
+      "min-width": "4vw",
+      width: "100%",
       display: "flex",
       "flex-direction": "column",
       gap: "0.33vw",

@@ -5,13 +5,12 @@
 import $ from "jquery";
 import player_actions from "../scene_control/playeractions.js";
 import current_entities from "../entities";
-import skills_list from "../../data_files/data_skills";
+// import skills_list from "../../data_files/data_skills";
 import create_actionText from "./create_actiontext";
-import items from "../../data_files/data_items.js";
+// import items from "../../data_files/data_items.js";
 import $actionText from "./actionText.js";
 
 import redrectangle from "/assets/ui/redrectangle.png";
-
 
 const actionSkills = () => {
   const skillscontainer = $("<div>").attr("id", "skillscontainer").css({
@@ -26,18 +25,18 @@ const actionSkills = () => {
 
   const player = current_entities.players[current_entities.currentplayer];
 
-  //    Copy Shallow copy of skills into array
-  const player_skills = player.skills.map((obj) => {
-    return skills_list.filter((skillz) => {
-      return obj == skillz.id;
-    })[0];
-  });
+  //*    Copy Shallow copy of skills into array
+  // const player_skills = player.skills.map((obj) => {
+  //   return skills_list.filter((skillz) => {
+  //     return obj == skillz.id;
+  //   })[0];
+  // });
 
   // let evens = false;
   // const skills_left = [];
   // const skills_right = [];
   //* Seperate into 2 groups (.skillsleft .skillsright)
-  player_skills.forEach((obj) => {
+  player.skills.forEach((obj) => {
     const $items = $("<div>")
       .css({
         width: "30%",
@@ -52,6 +51,7 @@ const actionSkills = () => {
           .attr("id", `skillid${obj.id}`)
           .addClass("actionbutton")
           .css({
+            cursor: "pointer",
             width: "100%",
             height: "100%",
             color: "ghostwhite",
@@ -67,11 +67,15 @@ const actionSkills = () => {
             $("#skillscontainer").remove();
             create_actionText();
             current_entities.skillbar_status = false;
+            const weapon = player.equipment.find(
+              (element) =>
+                element.type == "Melee" ||
+                element.type == "Ranged" ||
+                element.type == "Magic"
+            );
             if (player.mana >= obj.mana_cost) {
-              if (
-                obj.weapon ==
-                items.filter((obj) => obj.id == player.equipment.weapon)[0].type
-              ) {
+              if (obj.weapon == weapon.type) {
+                // items.filter((obj) => obj.id == player.equipment.weapon)[0].type)
                 console.log("Correct weapon type, casting spell");
                 player_actions.player_skill(
                   player,

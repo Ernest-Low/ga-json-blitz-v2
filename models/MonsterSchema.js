@@ -21,16 +21,20 @@ const monsterSchema = new Schema(
     scaling_agi: { type: Number, default: 0 },
     scaling_int: { type: Number, default: 0 },
     skills: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Skills",
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Skills",
+        },
+      ],
       default: [],
     },
     // status: [],    //  Future addition with buffs / debuffs
-    // img_src: 'image_data/monsters/Goblin_Grunt.png',   Depreciated, using position in sprite sheet
-    x_pos: { type: Number, required: true }, //  Position in sprite sheet
-    y_pos: { type: Number, required: true }, //  Position in sprite sheet
-    img_size: { type: [String], required: true }, // Div size ["X%", "Y%"]
-    scale: { type: [Number], default: [1, 1] }, // Image size
+    img_src: { type: String, required: true }, //  Reference which sheet to be used
+    img_size: { type: [String], required: true }, //  Div Size
+    sprite_pos: { type: [String], required: true }, //  Spritesheet position
+    scale: { type: [Number], default: [1, 1] }, //  Image size
+    img_translate: { type: [String], default: ["0%", "0%"] }, //  Img adjustment
   },
   { timestamps: true }
 );

@@ -5,6 +5,24 @@
 //* Weapon: melee, ranged, magic
 //* Spells can have a health_cost too!
 
+// name: { type: String, required: true },
+// id: { type: Number, required: true },
+// health_cost: { type: Number, default: 0 },
+// mana_cost: { type: Number, default: 0 },
+// cooldown: { type: Number, default: 0 },
+// damage: { type: Number, default: 0 },
+// scaling_str: { type: Number, default: 0 },
+// scaling_agi: { type: Number, default: 0 },
+// scaling_int: { type: Number, default: 0 },
+// damage_spill: { type: Number, required: true },
+// type: { type: String, required: true },
+// weapon: { type: String, required: true },
+//* buff: [],      //  Future Addition
+//* debuff: [],    //  Future Addition
+// gold_cost: { type: Number, required: true },
+// img_src: { type: String, required: true }, //  Reference which sheet to be used
+// sprite_pos: { type: [String], required: true }, //  Spritesheet position
+
 const skills_list = [
   {
     name: "Power Slash",
@@ -13,13 +31,17 @@ const skills_list = [
     mana_cost: 6,
     cooldown: 0,
     damage: 9,
-    scaling: [0.5, 0, 0],
+    scaling_str: 0.5,
+    scaling_agi: 0,
+    scaling_int: 0,
     damage_spill: 2,
     type: "skill",
     weapon: "Melee",
-    buff: [],
-    debuff: [],
-    cost: 50,
+    // buff: [],
+    // debuff: [],
+    gold_cost: 50,
+    // img_src: "",     //  For use in skill tool-tip
+    // sprite_pos: ""   //  For use in skill tool-tip
   },
   {
     name: "Fireball",
@@ -28,13 +50,17 @@ const skills_list = [
     mana_cost: 6,
     cooldown: 0,
     damage: 8,
-    scaling: [0, 0, 0.75],
+    scaling_str: 0,
+    scaling_agi: 0,
+    scaling_int: 0.75,
     damage_spill: 1,
     type: "spell",
     weapon: "Magic",
-    buff: [],
-    debuff: [],
-    cost: 50,
+    // buff: [],
+    // debuff: [],
+    gold_cost: 50,
+    // img_src: "",
+    // sprite_pos: ""
   },
   {
     name: "Power Shot",
@@ -43,13 +69,17 @@ const skills_list = [
     mana_cost: 6,
     cooldown: 0,
     damage: 8,
-    scaling: [0, 0, 0.65],
+    scaling_str: 0,
+    scaling_agi: 0.65,
+    scaling_int: 0,
     damage_spill: 3,
     type: "skill",
     weapon: "Ranged",
-    buff: [],
-    debuff: [],
-    cost: 50,
+    // buff: [],
+    // debuff: [],
+    gold_cost: 50,
+    // img_src: "",
+    // sprite_pos: ""
   },
 ];
 

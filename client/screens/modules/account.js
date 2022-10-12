@@ -2,6 +2,7 @@ import $ from "jquery";
 import axios from "axios";
 
 import current_entities from "../entities";
+import mainScreen from "../mainscreen";
 
 import x_button from "/assets/ui/cancel.png";
 import ok_button from "/assets/ui/accept.png";
@@ -283,6 +284,87 @@ const $account = () => {
       $register_inputconfirmpassword
     );
 
+  //! Login on click functions
+  const login_func = async () => {
+    const name_input = $login_inputname.val().trim();
+    const pass_input = $login_inputpassword.val();
+    if (name_input == "") {
+      $login_text.text("Username cannot be blank");
+    } else {
+      if (pass_input == "") {
+        $login_text.text("Password cannot be blank");
+      } else {
+        try {
+          const response = await axios.post("/api/login", {
+            username: name_input,
+            password: pass_input,
+          });
+          if (response.data.status == 200) {
+            console.log("Login Success");
+            console.log(response.data.payload);
+            const localuser = {
+              user: {
+                username: name_input,
+                accessToken: response.data.payload.accessToken,
+              },
+            };
+            localStorage.setItem("user", JSON.stringify(localuser));
+            current_entities.account_window = false;
+            current_entities.username = name_input;
+            $("#account_window").remove();
+            $("#mainscreen").remove();
+            mainScreen();
+          } else {
+            console.log("Login Failed");
+            $login_text.text(response.data.payload);
+          }
+        } catch (err) {
+          console.log("Login Failed");
+          $login_text.text(err.response.data.payload);
+        }
+      }
+    }
+  };
+
+  //! Register on click functions
+  const register_func = async () => {
+    const name_input = $register_inputname.val().trim();
+    const pass_input = $register_inputpassword.val();
+    const confirmpass_input = $register_inputconfirmpassword.val();
+    if (name_input == "") {
+      $register_text.text("Username cannot be blank");
+    } else {
+      if (pass_input.length < 8) {
+        $register_text.text("Password not long enough");
+      } else {
+        if (pass_input !== confirmpass_input) {
+          $register_text.text("Passwords do not match");
+        } else {
+          console.log("Name:" + name_input);
+          console.log("Pass:" + pass_input);
+          try {
+            const response = await axios.post("/api/register", {
+              username: name_input,
+              password: pass_input,
+            });
+            if (response.data.status == 201) {
+              console.log("Registration Success");
+              $("#account_window").remove();
+              $account();
+              $login_text.text("Registration Success");
+            } else {
+              console.log("Registration Failed");
+              $register_text.text(response.data.payload);
+            }
+          } catch (err) {
+            console.log("Registration Failed");
+            $register_text.text(err.response.data.payload);
+          }
+        }
+      }
+    }
+  };
+
   //* Okay Button
   const $okaybutton = $("<div>")
     .addClass("divbutton")
@@ -298,6 +380,7 @@ const $account = () => {
       $("<button>")
         .addClass("actionbutton")
         .css({
+          cursor: "pointer",
           "border-radius": "999rem",
           width: "100%",
           height: "100%",
@@ -311,53 +394,10 @@ const $account = () => {
         .on("click", async () => {
           if (current_window == "login") {
             console.log("Login ok pressed");
-            const name_input = $login_inputname.val().trim();
-            const pass_input = $login_inputpassword.val();
-            if (name_input == "") {
-              $login_text.text("Username cannot be blank");
-            } else {
-              if (pass_input == "") {
-                $login_text.text("Password cannot be blank");
-              } else {
-                try {
-                  const response = await axios.post("/api/login", {
-                    username: name_input,
-                    password: pass_input,
-                  });
-                  console.log(response.data);
-                } catch (err) {
-                  console.log("Error here");
-                  if (!err.response) {
-                    $login_text.text("No Server Response");
-                  } else if (err.response?.status === 400) {
-                    $login_text.text("Missing Username or Password");
-                  } else if (err.response?.status === 401) {
-                    $login_text.text("Unauthorized");
-                  } else {
-                    $login_text.text("Login Failed");
-                  }
-                }
-              }
-            }
+            login_func();
           } else {
             console.log("Register ok pressed");
-            const name_input = $register_inputname.val().trim();
-            const pass_input = $register_inputpassword.val();
-            const confirmpass_input = $register_inputconfirmpassword.val();
-            if (name_input == "") {
-              $register_text.text("Username cannot be blank");
-            } else {
-              if (pass_input.length < 8) {
-                $register_text.text("Password not long enough");
-              } else {
-                if (pass_input !== confirmpass_input) {
-                  $register_text.text("Passwords do not match");
-                } else {
-                  console.log("Name:" + name_input);
-                  console.log("Pass:" + pass_input);
-                }
-              }
-            }
+            register_func();
           }
         })
     );
@@ -377,6 +417,7 @@ const $account = () => {
       $("<button>")
         .addClass("actionbutton")
         .css({
+          cursor: "pointer",
           "border-radius": "999rem",
           width: "100%",
           height: "100%",
@@ -435,6 +476,22 @@ const $account = () => {
       $window.prepend($register);
     });
 
+  $(document).off();
+  $(document).on("keydown", (e) => {
+    if (e.key == "Escape" && current_entities.account_window == true) {
+      console.log("Remove register/login window");
+      $("#account_window").remove();
+      current_entities.account_window = false;
+    } else if (e.key == "Enter" && current_entities.account_window == true) {
+      if (current_window == "login") {
+        console.log("Login Enter pressed");
+        login_func();
+      } else {
+        console.log("Register Enter pressed");
+        register_func();
+      }
+    }
+  });
   $login.append($login_text, $login_name, $login_password, $swap_regist);
   $window.append($login, $account_btncontainer);
   $("#mainscreen").append($window);

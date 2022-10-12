@@ -20,6 +20,31 @@
 //  ? Level scaling
 //  * Future addition!? Need to think of a calculation that will determine an enemy's power.
 
+//     name: { type: String, required: true },
+//     id: { type: Number, required: true },
+//     level: { type: Number, required: true },
+//     health: { type: Number, required: true },
+//     health_max: { type: Number, required: true },
+//     mana: { type: Number, default: 0 },
+//     mana_max: { type: Number, default: 0 },
+//     armor: { type: Number, default: 0 },
+//     damage: { type: Number, required: true },
+//     damage_spill: { type: Number, required: true },
+//     crit_chance: { type: Number, default: 0 },
+//     strength: { type: Number, required: true },
+//     agility: { type: Number, required: true },
+//     intelligence: { type: Number, required: true },
+//     scaling_str: { type: Number, default: 0 },
+//     scaling_agi: { type: Number, default: 0 },
+//     scaling_int: { type: Number, default: 0 },
+//     skills: [Skills]
+//*    status: [],    //  Future addition with buffs / debuffs
+//     img_src: { type: String, required: true }, //  Reference which sheet to be used
+//     model_size: { type: [String], required: true }, //  Div Size
+//     sprite_pos: { type: [String], required: true }, //  Spritesheet position
+//     scale: { type: [Number], default: [1, 1] }, //  Image size
+//     img_translate: { type: [String], default: ["0%", "0%"] }, //  Img adjustment
+
 const monsters = [
   {
     name: "Goblin",
@@ -36,13 +61,15 @@ const monsters = [
     strength: 5,
     agility: 5,
     intelligence: 2,
-    scaling: [0.3, 0.2, 0],
+    scaling_str: 0.3,
+    scaling_agi: 0.2,
+    scaling_int: 0,
     skills: [],
-    status: [],
-    img_src: "monster_sheet_1",  //  Reference which sheet to be used
-    img_size: ["8.5%", "30%"],
+    // status: [],  // Future addition
+    model_size: ["8.5%", "30%"],
+    img_src: "monster_sheet_1", //  Reference which sheet to be used
     sprite_pos: ["0%", "0%"], //  Spritesheet position
-    scale: [2.5, 2.5], //  Image size
+    img_scale: [2.5, 2.5], //  Image size
     img_translate: ["0%", "0%"], //  Img adjustment
   },
   {
@@ -60,11 +87,16 @@ const monsters = [
     strength: 7,
     agility: 4,
     intelligence: 2,
-    scaling: [0.5, 0.1, 0],
+    scaling_str: 0.5,
+    scaling_agi: 0.1,
+    scaling_int: 0,
     skills: [],
     status: [],
-    img_src: "image_data/monsters/Orc.png",
-    img_size: ["10%", "40%"],
+    model_size: ["10%", "40%"],
+    img_src: "monster_sheet_1",
+    sprite_pos: ["83.33%", "0%"],
+    img_scale: [1.6, 1.6],
+    img_translate: ["5%", "5%"],
   },
   {
     name: "Twister",
@@ -81,14 +113,19 @@ const monsters = [
     strength: 4,
     agility: 7,
     intelligence: 2,
-    scaling: [0.2, 0.4, 0],
+    scaling_str: 0.2,
+    scaling_agi: 0.4,
+    scaling_int: 0,
     skills: [],
     status: [],
-    img_src: "image_data/monsters/Twister.png",
-    img_size: ["7.5%", "30%"],
+    model_size: ["7.5%", "40%"],
+    img_src: "monster_sheet_1",
+    sprite_pos: ["66.67%", "60%"],
+    img_scale: [1.5, 1.2],
+    img_translate: ["0%", "0%"],
   },
   {
-    name: "Evil Shaman",
+    name: "Orc Shaman",
     id: 4,
     level: 2,
     health: 40,
@@ -102,11 +139,16 @@ const monsters = [
     strength: 3,
     agility: 3,
     intelligence: 8,
-    scaling: [0, 0, 0],
+    scaling_str: 0,
+    scaling_agi: 0,
+    scaling_int: 0,
     skills: [2],
     status: [],
-    img_src: "image_data/monsters/evil_shaman.png",
-    img_size: ["7.5%", "30%"],
+    model_size: ["7.5%", "40%"],
+    img_src: "monster_sheet_1",
+    sprite_pos: ["50%", "40%"],
+    img_scale: [1.9, 1.6],
+    img_translate: ["-20%", "0%"],
   },
   {
     name: "Skeleton Archer",
@@ -123,11 +165,16 @@ const monsters = [
     strength: 3,
     agility: 7,
     intelligence: 2,
-    scaling: [0.2, 0.4, 0],
+    scaling_str: 0.2,
+    scaling_agi: 0.4,
+    scaling_int: 0,
     skills: [3],
     status: [],
-    img_src: "image_data/monsters/Skeleton_Archer.png",
-    img_size: ["7.5%", "30%"],
+    model_size: ["10%", "35%"],
+    img_src: "monster_sheet_1",
+    sprite_pos: ["0%", "20%"],
+    img_scale: [1.7, 1.9],
+    img_translate: ["-15%", "5%"],
   },
   {
     name: "Skeletal Hound",
@@ -144,11 +191,16 @@ const monsters = [
     strength: 5,
     agility: 7,
     intelligence: 2,
-    scaling: [0.3, 0.5, 0],
+    scaling_str: 0.3,
+    scaling_agi: 0.5,
+    scaling_int: 0,
     skills: [],
     status: [],
-    img_src: "image_data/monsters/skeletonhound.png",
-    img_size: ["10%", "25%"],
+    model_size: ["10%", "25%"],
+    img_src: "monster_sheet_1",
+    sprite_pos: ["16.67%", "20%"],
+    img_scale: [1.6, 1.6],
+    img_translate: ["-5%", "5%"],
   },
   {
     name: "Harpy",
@@ -165,11 +217,16 @@ const monsters = [
     strength: 5,
     agility: 7,
     intelligence: 2,
-    scaling: [0.3, 0.5, 0],
+    scaling_str: 0.3,
+    scaling_agi: 0.5,
+    scaling_int: 0,
     skills: [],
     status: [],
-    img_src: "image_data/monsters/Harpy.png",
-    img_size: ["10%", "25%"],
+    model_size: ["10%", "50%"],
+    img_src: "monster_sheet_1",
+    sprite_pos: ["50%", "80%"],
+    img_scale: [1.8, 1.5],
+    img_translate: ["8%", "5%"],
   },
 ];
 

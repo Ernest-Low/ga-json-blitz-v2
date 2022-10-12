@@ -1,5 +1,5 @@
 // ! Design item drop table?
-// * Attributes = [str,agi,int,hp,mp] --! Change to an object for more visibility
+// * Attributes = [str,agi,int,health,mana] --! Change to an object for more visibility
 // * Scaling (Change to object as well for better visibility)
 // * Type: melee, ranged, magic
 // Melee higher base damage
@@ -7,11 +7,31 @@
 // Magic no damage (for now?), adds more int / mana
 
 // ! Currently 2 item types only: common / uncommon
-// * Loot Table? (Temp loot table probs)
+// * Loot Table? (Temana loot table probs)
 // > Common loot table of monster level -2 to monster level of itemlevel (monster level 4 will drop level 2 - 4 loot)
 // > Rare loot table of monster level -4 to monster level of itemlevel (monster level 7 will drop level 3 - 7 loot)
 //     - 3% (For now) per fight for rare items
 //     - 10% (For now) per monster for common items?
+
+// name: { type: String, required: true },
+// id: { type: Number, required: true },
+// drop_level: { type: Number, required: true },
+// rarity: { type: String, required: true },
+// damage: { type: Number, required: true },
+// damage_spill: { type: Number, required: true },
+// potency: { type: Number, default: 0 }, // For potions and other effects
+// strength: { type: Number, default: 0 },
+// agility: { type: Number, default: 0 },
+// intelligence: { type: Number, default: 0 },
+// health: { type: Number, default: 0 },
+// mana: { type: Number, default: 0 },
+// scaling_str: { type: Number, default: 0 },
+// scaling_agi: { type: Number, default: 0 },
+// scaling_int: { type: Number, default: 0 },
+// type: { type: String, required: true },
+// img_src: { type: String, required: true }, //  Link to spritesheet
+// sprite_pos: { type: [Number], required: true }, // Spritesheet Position
+// gold_value: { type: Number, required: true },
 
 const items = [
   {
@@ -21,11 +41,18 @@ const items = [
     rarity: "Common",
     damage: 4,
     damage_spill: 2,
-    attributes: [0, 0, 0, 0, 0],
-    scaling: [0.2, 0, 0],
+    strength: 0,
+    agility: 0,
+    intelligence: 0,
+    health: 0,
+    mana: 0,
+    scaling_str: 0.2,
+    scaling_agi: 0,
+    scaling_int: 0,
     type: "Melee",
-    img_src: 'image_data/icons/weapons/sword/sword_1.png',
-    value: 50,
+    img_src: "image_data/icons/weapons/sword/sword_1.png",
+    sprite_pos: [],
+    gold_value: 50,
   },
   {
     name: "Iron Sword",
@@ -34,11 +61,18 @@ const items = [
     rarity: "Common",
     damage: 8,
     damage_spill: 3,
-    attributes: [1, 0, 0, 0, 0],
-    scaling: [0.2, 0, 0],
+    strength: 1,
+    agility: 0,
+    intelligence: 0,
+    health: 0,
+    mana: 0,
+    scaling_str: 0.2,
+    scaling_agi: 0,
+    scaling_int: 0,
     type: "Melee",
-    img_src: 'image_data/icons/weapons/sword/sword_2.png',
-    value: 200,
+    img_src: "image_data/icons/weapons/sword/sword_2.png",
+    sprite_pos: [],
+    gold_value: 200,
   },
   {
     name: "Crude Bow",
@@ -47,11 +81,18 @@ const items = [
     rarity: "Common",
     damage: 4,
     damage_spill: 3,
-    attributes: [0, 0, 0, 0, 0],
-    scaling: [0, 0.3, 0],
+    strength: 0,
+    agility: 0,
+    intelligence: 0,
+    health: 0,
+    mana: 0,
+    scaling_str: 0,
+    scaling_agi: 0.3,
+    scaling_int: 0,
     type: "Ranged",
-    img_src: 'image_data/icons/weapons/bow/bow_1.png',
-    value: 50,
+    img_src: "image_data/icons/weapons/bow/bow_1.png",
+    sprite_pos: [],
+    gold_value: 50,
   },
   {
     name: "Fine Bow",
@@ -60,11 +101,18 @@ const items = [
     rarity: "Common",
     damage: 7,
     damage_spill: 4,
-    attributes: [0, 1, 0, 0, 0],
-    scaling: [0, 0.3, 0],
+    strength: 0,
+    agility: 1,
+    intelligence: 0,
+    health: 0,
+    mana: 0,
+    scaling_str: 0,
+    scaling_agi: 0.3,
+    scaling_int: 0,
     type: "Ranged",
-    img_src: 'image_data/icons/weapons/bow/bow_2.png',
-    value: 200,
+    img_src: "image_data/icons/weapons/bow/bow_2.png",
+    sprite_pos: [],
+    gold_value: 200,
   },
   {
     name: "Rough Staff",
@@ -73,11 +121,18 @@ const items = [
     rarity: "Common",
     damage: 1,
     damage_spill: 0,
-    attributes: [0, 0, 1, 0, 10],
-    scaling: [0, 0, 0],
+    strength: 0,
+    agility: 0,
+    intelligence: 1,
+    health: 0,
+    mana: 10,
+    scaling_str: 0,
+    scaling_agi: 0,
+    scaling_int: 0,
     type: "Magic",
-    img_src: 'image_data/icons/weapons/staff/staff_1.png',
-    value: 50,
+    img_src: "image_data/icons/weapons/staff/staff_1.png",
+    sprite_pos: [],
+    gold_value: 50,
   },
   {
     name: "Carved Staff",
@@ -86,11 +141,18 @@ const items = [
     rarity: "Common",
     damage: 2,
     damage_spill: 1,
-    attributes: [0, 0, 2, 0, 20],
-    scaling: [0, 0, 0],
+    strength: 0,
+    agility: 0,
+    intelligence: 2,
+    health: 0,
+    mana: 20,
+    scaling_str: 0,
+    scaling_agi: 0,
+    scaling_int: 0,
     type: "Magic",
-    img_src: 'image_data/icons/weapons/staff/staff_2.png',
-    value: 200,
+    img_src: "image_data/icons/weapons/staff/staff_2.png",
+    sprite_pos: [],
+    gold_value: 200,
   },
 
   {
@@ -100,8 +162,9 @@ const items = [
     rarity: "Common",
     potency: 20,
     type: "Health",
-    img_src: 'image_data/icons/consumables/health_pot/health_pot_1.png',
-    value: 20,
+    img_src: "image_data/icons/consumables/health_pot/health_pot_1.png",
+    sprite_pos: [],
+    gold_value: 20,
   },
   {
     name: "Health Potion",
@@ -110,8 +173,9 @@ const items = [
     rarity: "Common",
     potency: 35,
     type: "Health",
-    img_src: 'image_data/icons/consumables/health_pot/health_pot_2.png',
-    value: 50,
+    img_src: "image_data/icons/consumables/health_pot/health_pot_2.png",
+    sprite_pos: [],
+    gold_value: 50,
   },
   {
     name: "Basic Mana Potion",
@@ -120,8 +184,9 @@ const items = [
     rarity: "Common",
     potency: 20,
     type: "Mana",
-    img_src: 'image_data/icons/consumables/mana_pot/mana_pot_1.png',
-    value: 20,  
+    img_src: "image_data/icons/consumables/mana_pot/mana_pot_1.png",
+    sprite_pos: [],
+    gold_value: 20,
   },
   {
     name: "Mana Potion",
@@ -130,8 +195,9 @@ const items = [
     rarity: "Common",
     potency: 40,
     type: "Mana",
-    img_src: 'image_data/icons/consumables/mana_pot/mana_pot_2.png',
-    value: 50,
+    img_src: "image_data/icons/consumables/mana_pot/mana_pot_2.png",
+    sprite_pos: [],
+    gold_value: 50,
   },
 ];
 

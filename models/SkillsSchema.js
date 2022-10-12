@@ -17,6 +17,8 @@ const skillSchema = new mongoose.Schema(
     // buff: [],      //  Future Addition
     // debuff: [],    //  Future Addition
     gold_cost: { type: Number, required: true },
+    img_src: { type: String, required: true }, //  Reference which sheet to be used
+    sprite_pos: { type: [String], required: true }, //  Spritesheet position
   },
   { timestamps: true }
 );

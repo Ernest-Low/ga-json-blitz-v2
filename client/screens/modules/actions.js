@@ -9,6 +9,7 @@ import create_actionText from "./create_actiontext.js";
 const $actions = () => {
   //  CSS For Buttons
   const button_css = {
+    cursor: "pointer",
     width: "50%",
     height: "100%",
     color: "ghostwhite",

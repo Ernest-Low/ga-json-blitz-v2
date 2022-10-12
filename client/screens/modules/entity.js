@@ -13,7 +13,7 @@ const $entity_window = (entity) => {
     .css({
       width: "100%",
       height: "60%",
-      scale: `${entity.scale[0]} ${entity.scale[1]}`,
+      scale: `${entity.img_scale[0]} ${entity.img_scale[1]}`,
       translate: `${entity.img_translate[0]} ${entity.img_translate[1]}`,
     });
 
@@ -40,8 +40,8 @@ const $entity_window = (entity) => {
   const $entitybox = $("<div>")
     .attr("id", `${entity.id}box`)
     .css({
-      width: entity.img_size[0],
-      height: entity.img_size[1],
+      width: entity.model_size[0],
+      height: entity.model_size[1],
       display: "flex",
       "flex-direction": "column",
       "align-items": "flex-end",

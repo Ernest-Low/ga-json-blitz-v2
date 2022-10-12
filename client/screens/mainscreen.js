@@ -8,22 +8,7 @@ import $account from "./modules/account";
 import background_img from "/assets/Game_Landing_Page.png";
 
 //* Render Mainscreen (Aka main)
-const mainScreen = () => {
-  //  Back blackscreen
-  $("body").append(
-    $("<div>").attr("id", "blackscreen").css({
-      "z-index": -1,
-      width: "80vw",
-      "aspect-ratio": "16 / 9",
-      overflow: "hidden",
-      // "padding-top": "56.25%",
-      // height: "95vh",
-      border: "4px solid blue",
-      position: "absolute",
-      "background-color": "rgba(0,0,0,1)",
-    })
-  );
-
+const mainScreen = async () => {
   //  Mainscreen cover
   const $mainscreen = $("<div>")
     .attr("id", "mainscreen")
@@ -75,9 +60,11 @@ const mainScreen = () => {
 
   // Game start button
   const $gamestart = $("<button>")
+    .addClass("actionbutton")
     .attr("id", "btnmainstart")
     .text("Start")
     .css({
+      cursor: "pointer",
       "background-color": "rgba(0,0,0,0.8)",
       color: "white",
       "font-size": "1.5vw",
@@ -104,9 +91,11 @@ const mainScreen = () => {
     });
 
   const $gamesettings = $("<button>")
+    .addClass("actionbutton")
     .attr("id", "btnmainsettings")
-    .text("Settings")
+    .text("Settings / Mods")
     .css({
+      cursor: "pointer",
       color: "white",
       "background-color": "rgba(0,0,0,0.8)",
       "font-size": "1.5vw",
@@ -117,9 +106,11 @@ const mainScreen = () => {
     .on("click", () => console.log("Settings Clicked"));
 
   const $login = $("<button>")
-    .attr("id", "btnmainsettings")
+    .addClass("actionbutton")
+    .attr("id", "btnmainlogin")
     .text("Login / Register")
     .css({
+      cursor: "pointer",
       color: "white",
       "background-color": "rgba(0,0,0,0.8)",
       "font-size": "1.5vw",
@@ -135,17 +126,39 @@ const mainScreen = () => {
       }
     });
 
-  $(document).on("keydown", (e) => {
-    if (e.key == "Escape" && current_entities.account_window == true) {
-      console.log("Remove register/login window");
-      $("#account_window").remove();
-      current_entities.account_window = false;
-    }
-  });
+  const $logout = $("<button>")
+    .addClass("actionbutton")
+    .attr("id", "btnmainlogout")
+    .text("Logout")
+    .css({
+      cursor: "pointer",
+      color: "white",
+      "background-color": "rgba(0,0,0,0.8)",
+      "font-size": "1.5vw",
+      width: "100%",
+      height: "25%",
+      "font-family": "Alagard",
+    })
+    .on("click", () => {
+      console.log("Logout Clicked");
+      current_entities.username = "";
+      localStorage.removeItem("user");
+      $("#mainscreen").remove();
+      mainScreen();
+    });
 
   $("body").append($mainscreen);
   $("#mainscreen").append($textbox);
-  $("#maintextbox").append($inputname, $gamestart, $login, $gamesettings);
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.dir(user);
+  if (user !== null) {
+    console.log("Localstorage user is not null");
+    current_entities.username = user.user.username;
+    $("#maintextbox").append($inputname, $gamestart, $gamesettings, $logout);
+  } else {
+    console.log("Localstorage user is null");
+    $("#maintextbox").append($inputname, $gamestart, $gamesettings, $login);
+  }
 };
 
 export default mainScreen;

@@ -9,6 +9,11 @@ import items from "../../data_files/data_items.js";
 import iteminfo from "./iteminfo.js";
 import create_battle from "./create_battle.js";
 
+import game_over from "/assets/ui/gameover.png";
+import victory2 from "/assets/ui/victory2.png";
+import currency_coin from "/assets/ui/currency_coin.png";
+import greenrect from "/assets/ui/greenrectangle.png";
+
 const afterBattle = {
   //  Check if zone is completed
   //! Currently full game in project1
@@ -19,9 +24,9 @@ const afterBattle = {
       //! Means its GG Victory
       //? Victory scene to be placed here temp
       console.log("Game Over, you win!");
-      this.afterScreen("YOU WIN!!!");
+      this.afterScreen();
     } else {
-      this.afterScreen("VICTORY!");
+      this.afterScreen();
     }
   },
 
@@ -29,14 +34,16 @@ const afterBattle = {
   defeat: function () {
     //!  Add a restart button
     //*  Didn't have time for now, but it's needed
-    $("#blackscreen").append("div").css({
-      width: "100%",
-      height: "100%",
-      "background-image": `url("/assets/image_data/modules/Results/Game Over.png")`,
-      "background-size": "100% 100%",
-      "background-repeat": "no-repeat",
-      "object-fit": "contain",
-    });
+    $("#blackscreen")
+      .append("div")
+      .css({
+        width: "100%",
+        height: "100%",
+        "background-image": `url("${game_over}")`,
+        "background-size": "100% 100%",
+        "background-repeat": "no-repeat",
+        "object-fit": "contain",
+      });
   },
 
   //  Gold drop (temp) = Monster levels * 10 +/- 10%, + between 10 - 20 gold
@@ -109,25 +116,27 @@ const afterBattle = {
     );
   },
 
-  afterScreen: function (status) {
+  afterScreen: function () {
     //  Append this screen on the black screen
-    const $afterscreen = $("<div>").attr("id", "afterscreen").css({
-      display: "flex",
-      position: "absolute",
-      // "justify-content": "space-around",
-      "flex-direction": "column",
-      "align-items": "center",
-      "z-index": 0,
-      "background-image": `url("/assets/image_data/modules/Results/victory2.png")`,
-      "background-size": "100% 100%",
-      "background-repeat": "no-repeat",
-      "object-fit": "fill",
-      width: "80vw",
-      "aspect-ratio": "16 / 9",
-      // height: "95vh",
-      border: "4px solid blue",
-      overflow: "hidden",
-    });
+    const $afterscreen = $("<div>")
+      .attr("id", "afterscreen")
+      .css({
+        display: "flex",
+        position: "absolute",
+        // "justify-content": "space-around",
+        "flex-direction": "column",
+        "align-items": "center",
+        "z-index": 0,
+        "background-image": `url("${victory2}")`,
+        "background-size": "100% 100%",
+        "background-repeat": "no-repeat",
+        "object-fit": "fill",
+        width: "80vw",
+        "aspect-ratio": "16 / 9",
+        // height: "95vh",
+        border: "4px solid blue",
+        overflow: "hidden",
+      });
 
     //  Show victory / defeat in title
     const $aftertop = $("<div>").attr("id", "aftertop").css({
@@ -202,7 +211,7 @@ const afterBattle = {
     const $goldpic = $("<div>").css({
       width: "35%",
       height: "30%",
-      "background-image": `url("/assets/image_data/icons/currency/currency_coin.png")`,
+      "background-image": `url("${currency_coin}")`,
       "background-size": "100% 100%",
       "background-repeat": "no-repeat",
       "object-fit": "contain",
@@ -321,16 +330,17 @@ const afterBattle = {
         flex: "none",
         width: "25%",
         height: "50%",
-        "background-image":
-          `url("/assets/image_data/modules/Buttons/greenrectangle.png")`,
+        "background-image": `url("${greenrect}")`,
         "background-size": "100% 100%",
         "background-repeat": "no-repeat",
         "object-fit": "contain",
       })
       .append(
         $("<button>")
+          .addClass("actionbutton")
           .attr("id", "btnnextmatch")
           .css({
+            cursor: "pointer",
             width: "100%",
             height: "100%",
             color: "ghostwhite",
@@ -359,17 +369,18 @@ const afterBattle = {
         flex: "none",
         width: "25%",
         height: "50%",
-        "background-image":
-          `url("/assets/image_data/modules/Buttons/greenrectangle.png")`,
+        "background-image": `url("${greenrect}")`,
         "background-size": "100% 100%",
         "background-repeat": "no-repeat",
         "object-fit": "contain",
       })
       .append(
         $("<button>")
+          .addClass("actionbutton")
           .attr("id", "btnshop")
           .css({
-            width: "100%",
+            cursor: "pointer",
+            width: "80%",
             height: "100%",
             color: "ghostwhite",
             "background-color": "rgba(255,255,255,0)",
@@ -389,17 +400,18 @@ const afterBattle = {
         flex: "none",
         width: "25%",
         height: "50%",
-        "background-image":
-          `url("/assets/image_data/modules/Buttons/greenrectangle.png")`,
+        "background-image": `url("${greenrect}")`,
         "background-size": "100% 100%",
         "background-repeat": "no-repeat",
         "object-fit": "contain",
       })
       .append(
         $("<button>")
+          .addClass("actionbutton")
           .attr("id", "btninventory")
           .css({
-            width: "100%",
+            cursor: "pointer",
+            width: "80%",
             height: "100%",
             color: "ghostwhite",
             "background-color": "rgba(255,255,255,0)",
