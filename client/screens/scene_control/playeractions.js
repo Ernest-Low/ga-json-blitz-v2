@@ -20,11 +20,21 @@ const player_actions = {
     if (damage_spill_chance > 0.5) {
       damage_spill_chance = 1;
     } else damage_spill_chance = -1;
+
+    let final_str = entity.strength;
+    let final_agi = entity.strength;
+    let final_int = entity.strength;
+    entity.equipment.forEach((element) => {
+      final_str += element.strength;
+      final_agi += element.agility;
+      final_int += element.intelligence;
+    });
+
     let total_damage =
       multiplier.damage +
-      multiplier.scaling_str * entity.strength +
-      multiplier.scaling_agi * entity.agility +
-      multiplier.scaling_int * entity.intelligence +
+      multiplier.scaling_str * final_str +
+      multiplier.scaling_agi * final_agi +
+      multiplier.scaling_int * final_int +
       damage_spill_chance *
         Math.floor(Math.random() * (multiplier.damage_spill + 1));
 
@@ -72,16 +82,16 @@ const player_actions = {
     }
   },
 
-  //! Temporarily here to calculate full stats from equipment for attacks
-  equipment_stats: function (entity) {
-    const new_entity = structuredClone(entity);
-    new_entity.equipment.forEach((element) => {
-      new_entity.strength += element.strength;
-      new_entity.agility += element.agility;
-      new_entity.intelligence += element.intelligence;
-    });
-    return new_entity;
-  },
+  // //! Temporarily here to calculate full stats from equipment for attacks
+  // equipment_stats: function (entity) {
+  //   const new_entity = structuredClone(entity);
+  //   new_entity.equipment.forEach((element) => {
+  //     new_entity.strength = new_entity.strength + element.strength;
+  //     new_entity.agility = new_entity.agility + element.agility;
+  //     new_entity.intelligence = new_entity.intelligence + element.intelligence;
+  //   });
+  //   return new_entity;
+  // },
 
   //    Basic attack by player
   player_attack: function (entity, target) {
@@ -103,18 +113,27 @@ const player_actions = {
   },
 
   player_skill: function (entity, spell, target) {
+    // entity = this.equipment_stats(entity);
     this.reset_critical();
-    console.log(spell);
     let damage_spill_chance = Math.random();
     damage_spill_chance > 0.5
       ? (damage_spill_chance = 1)
       : (damage_spill_chance = -1);
-    console.log(damage_spill_chance);
+
+    let final_str = entity.strength;
+    let final_agi = entity.strength;
+    let final_int = entity.strength;
+    entity.equipment.forEach((element) => {
+      final_str += element.strength;
+      final_agi += element.agility;
+      final_int += element.intelligence;
+    });
+
     let spell_damage =
       spell.damage +
-      spell.scaling_str * entity.strength +
-      spell.scaling_agi * entity.agility +
-      spell.scaling_int * entity.intelligence +
+      spell.scaling_str * final_str +
+      spell.scaling_agi * final_agi +
+      spell.scaling_int * final_int +
       damage_spill_chance *
         Math.floor(Math.random() * (spell.damage_spill + 1));
     console.log(`First spell damage calculation: ${spell_damage}`);

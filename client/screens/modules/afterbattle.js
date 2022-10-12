@@ -312,11 +312,11 @@ const afterBattle = {
     //  Regenerate hero
     current_entities.monsters = [];
     current_entities.players.forEach((obj) => {
-      obj.health = Math.ceil(obj.health * 1.15);
+      obj.health = Math.ceil(obj.health * 1.25);
       if (obj.health > obj.health_max) {
         obj.health = obj.health_max;
       }
-      obj.mana = Math.ceil(obj.mana * 1.15);
+      obj.mana = Math.ceil(obj.mana * 1.20);
       if (obj.mana > obj.mana_max) {
         obj.mana = obj.mana_max;
       }

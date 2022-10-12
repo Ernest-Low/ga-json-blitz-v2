@@ -58,11 +58,11 @@ const player = {
       rarity: "Common",
       damage: 4,
       damage_spill: 2,
-      str: 0,
-      agi: 0,
-      int: 0,
-      hp: 0,
-      mp: 0,
+      strength: 0,
+      agility: 0,
+      intelligence: 0,
+      health: 0,
+      mana: 0,
       scaling_str: 0.2,
       scaling_agi: 0,
       scaling_int: 0,
@@ -89,8 +89,8 @@ const player = {
       // buff: [],
       // debuff: [],
       gold_cost: 50,
-      // img_src: "",     //  For use in skill tool-tip
-      // sprite_pos: ""   //  For use in skill tool-tip
+      // img_src: "",
+      // sprite_pos: ""
     },
   ],
   status: [],

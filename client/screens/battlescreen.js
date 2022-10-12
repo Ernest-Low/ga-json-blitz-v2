@@ -6,8 +6,8 @@ import $entity_window from "./modules/entity.js";
 import $ from "jquery";
 
 import castlebg from "/assets/spritesheets/castlebg_sheet.jpg";
-import actionpanel from "/assets/ui/4buttons.png";
-import longpanel from "/assets/ui/largehpanel.png";
+import actionpanel from "/assets/ui/4buttons.jpg";
+import longpanel from "/assets/ui/largehpanel.jpg";
 
 //* Render Battle Screen (Fighting scene)
 const battleScreen = () => {

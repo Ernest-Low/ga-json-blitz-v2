@@ -5,7 +5,7 @@ import zones from "../data_files/data_zone";
 import create_battle from "./modules/create_battle";
 import $account from "./modules/account";
 
-import background_img from "/assets/Game_Landing_Page.png";
+import background_img from "/assets/Game_Landing_Page.jpg";
 
 //* Render Mainscreen (Aka main)
 const mainScreen = async () => {

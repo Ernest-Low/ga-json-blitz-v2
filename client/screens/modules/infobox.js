@@ -2,6 +2,9 @@
 import $ from "jquery";
 
 const character_info = (entity) => {
+  const hp_bar = `${Math.ceil((entity.health / entity.health_max) * 100)}%`;
+  const mp_bar = `${Math.ceil((entity.mana / entity.mana_max) * 100)}%`;
+
   //  Name
   const $name = $("<div>")
     .text(entity.name)
@@ -19,12 +22,14 @@ const character_info = (entity) => {
 
   //* HP Box
   //  HP Progress Bar
-  const $hpbar = $("<div>").attr("id", `${entity.id}hpbar`).css({
-    height: "0.5vw",
-    width: "100%",
-    "border-radius": "0.5rem",
-    "background-color": "rgba(255,0,0,1)",
-  });
+  const $hpbar = $("<div>")
+    .attr("id", `${entity.id}hpbar`)
+    .css({
+      height: "0.5vw",
+      width: `${hp_bar}`,
+      "border-radius": "0.5rem",
+      "background-color": "rgba(255,0,0,1)",
+    });
 
   //  HP Progress Bar Cover
   const $hpbarcover = $("<div>")
@@ -77,12 +82,14 @@ const character_info = (entity) => {
 
   //*  MP Box
   //  MP Progress Bar
-  const $mpbar = $("<div>").attr("id", `${entity.id}mpbar`).css({
-    height: "0.5vw",
-    width: "100%",
-    "border-radius": "0.5vw",
-    "background-color": "rgba(0,0,255,1)",
-  });
+  const $mpbar = $("<div>")
+    .attr("id", `${entity.id}mpbar`)
+    .css({
+      height: "0.5vw",
+      width: `${mp_bar}`,
+      "border-radius": "0.5vw",
+      "background-color": "rgba(0,0,255,1)",
+    });
 
   // MP Progress Bar Cover
   const $mpbarcover = $("<div>")
