@@ -68,7 +68,7 @@ const monsters = [
     // status: [],  // Future addition
     model_size: ["8.5%", "30%"],
     img_src: "monster_sheet_1", //  Reference which sheet to be used
-    sprite_pos: ["0%", "0%"], //  Spritesheet position
+    sprite_pos: ["16.67%", "0%"], //  Spritesheet position
     img_scale: [2.5, 2.5], //  Image size
     img_translate: ["0%", "0%"], //  Img adjustment
   },
@@ -94,7 +94,7 @@ const monsters = [
     status: [],
     model_size: ["10%", "40%"],
     img_src: "monster_sheet_1",
-    sprite_pos: ["83.33%", "0%"],
+    sprite_pos: ["66.67%", "0%"],
     img_scale: [1.6, 1.6],
     img_translate: ["5%", "5%"],
   },
@@ -120,7 +120,7 @@ const monsters = [
     status: [],
     model_size: ["7.5%", "40%"],
     img_src: "monster_sheet_1",
-    sprite_pos: ["66.67%", "60%"],
+    sprite_pos: ["33.33%", "20%"],
     img_scale: [1.5, 1.2],
     img_translate: ["0%", "0%"],
   },
@@ -146,7 +146,7 @@ const monsters = [
     status: [],
     model_size: ["7.5%", "40%"],
     img_src: "monster_sheet_1",
-    sprite_pos: ["50%", "40%"],
+    sprite_pos: ["16.67%", "40%"],
     img_scale: [1.9, 1.6],
     img_translate: ["-20%", "0%"],
   },
@@ -172,7 +172,7 @@ const monsters = [
     status: [],
     model_size: ["10%", "35%"],
     img_src: "monster_sheet_1",
-    sprite_pos: ["0%", "20%"],
+    sprite_pos: ["83.33%", "0%"],
     img_scale: [1.7, 1.9],
     img_translate: ["-15%", "5%"],
   },
@@ -198,7 +198,7 @@ const monsters = [
     status: [],
     model_size: ["10%", "25%"],
     img_src: "monster_sheet_1",
-    sprite_pos: ["16.67%", "20%"],
+    sprite_pos: ["16.67%", "100%"],
     img_scale: [1.6, 1.6],
     img_translate: ["-5%", "5%"],
   },
@@ -224,7 +224,7 @@ const monsters = [
     status: [],
     model_size: ["10%", "50%"],
     img_src: "monster_sheet_1",
-    sprite_pos: ["50%", "80%"],
+    sprite_pos: ["33.33%", "0%"],
     img_scale: [1.8, 1.5],
     img_translate: ["8%", "5%"],
   },
