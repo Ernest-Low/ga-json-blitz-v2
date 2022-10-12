@@ -1,6 +1,7 @@
 //!  Render character into scene
 import $ from "jquery";
 import character_info from "./infobox.js";
+
 import monster_sheet_1 from "/assets/spritesheets/monster_sheet_1.png";
 import character_sheet_1 from "/assets/spritesheets/characters_sheet_1.png";
 
