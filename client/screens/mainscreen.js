@@ -83,7 +83,9 @@ const mainScreen = async () => {
       //* Reset json state
       jsoninit();
       //! Put in mods!
-      modchanges();
+      if (modchanges.modpack_active) {
+        modchanges.updatelist();
+      }
 
       //!  Call the player, temporary
       let copiedhero = structuredClone(player[0]);
