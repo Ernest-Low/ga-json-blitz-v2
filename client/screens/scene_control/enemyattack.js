@@ -77,19 +77,19 @@ const enemyAttack = {
 
   damage_target: function (damage, target, type, entity) {
     current_entities.current_turn = "pending";
-    turn_control.enemy_turn(5);
+    turn_control.enemy_turn(2.5);
 
     if (target.health >= damage) {
       update_hpmp(target, damage, 0);
       $actionText(
         `${this.critical_hit}You were dealt ${damage} damage from ${entity.name} by ${type}!`,
-        3
+        0.8
       );
     } else {
       update_hpmp(target, target.health, 0);
       $actionText(
         `${this.critical_hit}You were overkilled by ${entity.name}, taking ${damage} damage from ${type}!`,
-        3
+        0.8
       );
     }
   },

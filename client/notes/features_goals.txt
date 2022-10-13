@@ -97,3 +97,26 @@ Monster revives / summons  (or player revivals)
 
 Future Multiplayer
 - Have to seperate player values into an array, out from the hero characters
+
+
+User Accounts
+    User Accounts -> Used to save mods / progress
+
+    Progress is saved at end of each stage (subject to change)
+    Saved progress goes into localstorage
+    > Additionally goes into user account if logged in
+
+    Modpacks - Modpack button replaces Login/Register when user has logged in
+    > 2 types, Edit, Add. Only one of each active at each time
+    - Edit: Edits base values
+    - Add: Adds new values (cannot override IDs)
+
+    Added features will ignore execution if ID does not exist.
+    > Skills, Monsters, Items, etc.
+
+    Can find submitted mods by other players - have a 'Likes' counter on each object
+    > Filter by Name, Author's Name, Likes Count
+
+
+Mods
+-Save Mods in localstorage too to be retrieved (unlock mods from requiring log in)

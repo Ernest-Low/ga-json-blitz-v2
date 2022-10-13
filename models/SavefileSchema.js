@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const SavefileSchema = new mongoose.Schema(
+const SavefileSchema = new Schema(
   {
     players: {
       type: [
@@ -9,7 +10,6 @@ const SavefileSchema = new mongoose.Schema(
           ref: "Players",
         },
       ],
-      default: [],
     },
     gold: { type: Number, default: 0 },
     items: {
@@ -19,21 +19,10 @@ const SavefileSchema = new mongoose.Schema(
           ref: "Items",
         },
       ],
-      default: [],
-    },
-    monsters: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Monsters",
-        },
-      ],
-      default: [],
     },
     zone: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Zones",
-      default: {},
     },
   },
   { timestamps: true }

@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const zoneSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    name2: { type: String, required: true }, //  Look through code to find out where this was used?!
     id: { type: Number, required: true },
     level_range: { type: [Number], required: true },
     enemy_type: { type: [Number], required: true },

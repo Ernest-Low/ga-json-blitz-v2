@@ -1,0 +1,55 @@
+import $ from "jquery";
+
+import rectangleh from "/assets/ui/rectangleh.jpg";
+import current_entities from "../entities";
+
+const $modedit = {
+  current_modpack: {
+    name: "",
+    author: "",
+    private: false,
+    items: [],
+    monsters: [],
+    player: [],
+    skills_list: [],
+    zones: [],
+  },
+
+
+
+  viewmodpack: function (modpack) {
+    this.current_modpack = structuredClone(modpack)
+    // Display, no edit
+  },
+
+  importmodpack: function (modpack) {
+    this.current_modpack = structuredClone(modpack);
+    //  Go into edit
+  },
+
+  editmodpack : function () {
+
+    const $modeditscreen = $("<div>")
+      .attr("id", "modeditscreen")
+      .css({
+        position: "absolute",
+        width: "80vw",
+        "aspect-ratio": "16 / 9",
+        display: "flex",
+        "flex-direction": "column",
+        "align-items": "center",
+        "z-index": 2,
+        border: "4px solid blue",
+        overflow: "hidden",
+        "background-image": `url("${rectangleh}")`,
+        "background-size": "100% 100%",
+        "background-repeat": "no-repeat",
+        "object-fit": "fill",
+      });
+
+    console.log ("hello")
+    $("body").append($modeditscreen);
+  }
+
+};
+export default $modedit;

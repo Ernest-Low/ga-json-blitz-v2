@@ -25,11 +25,11 @@
 }
 
 .hpanimation {
-  animation: hp-animation 3s;
+  animation: hp-animation 1.5s;
 }
 
 .mpanimation {
-  animation: mp-animation 3s;
+  animation: mp-animation 1.5s;
 }
 
 @keyframes hp-animation {

@@ -1,9 +1,14 @@
 import $ from "jquery";
+
 import current_entities from "./entities";
 import player from "../data_files/data_player.js";
 import zones from "../data_files/data_zone";
 import create_battle from "./modules/create_battle";
 import $account from "./modules/account";
+import modscreen from "./modscreen";
+import jsoninit from "./modules/jsoninit";
+import items from "../data_files/data_items";
+import modchanges from "./modules/modchanges";
 
 import background_img from "/assets/Game_Landing_Page.jpg";
 
@@ -75,13 +80,26 @@ const mainScreen = async () => {
     .on("click", () => {
       console.log("Start Clicked");
 
+      //* Reset json state
+      jsoninit();
+      //! Put in mods!
+      modchanges();
+
       //!  Call the player, temporary
-      let copiedhero = JSON.parse(JSON.stringify(player));
+      let copiedhero = structuredClone(player[0]);
       current_entities.players.push(copiedhero);
       current_entities.players[0].id = "p1";
+
+      //! Assigning name for hero
       current_entities.players[0].name = $("#inputname").val().trim() || "Guts";
+
+      //! Giving a healthpot to begin (id 4001)
+      const starting_item = items.filter((z) => z.id == 4001);
+      current_entities.items.push(structuredClone(starting_item));
+
       //! Declaring castle zone (temp)
-      current_entities.zone = JSON.parse(JSON.stringify(zones.castle));
+      const current_zone = zones.filter((z) => z.name == "Castle")[0];
+      current_entities.zone = structuredClone(current_zone);
 
       $("#mainscreen").fadeOut(2000);
       setTimeout(() => {
@@ -90,10 +108,10 @@ const mainScreen = async () => {
       }, 2000);
     });
 
-  const $gamesettings = $("<button>")
+  const $btnmods = $("<button>")
     .addClass("actionbutton")
-    .attr("id", "btnmainsettings")
-    .text("Settings / Mods")
+    .attr("id", "btnmods")
+    .text("Mods Settings")
     .css({
       cursor: "pointer",
       color: "white",
@@ -103,7 +121,15 @@ const mainScreen = async () => {
       height: "25%",
       "font-family": "Alagard",
     })
-    .on("click", () => console.log("Settings Clicked"));
+    .on("click", () => {
+      console.log("Mods Clicked");
+      if (current_entities.username == "") {
+        $account();
+        current_entities.account_window = true;
+      } else {
+        modscreen.mainscreen();
+      }
+    });
 
   const $login = $("<button>")
     .addClass("actionbutton")
@@ -147,6 +173,8 @@ const mainScreen = async () => {
       mainScreen();
     });
 
+  //! Add a axios call to check if JWT has expired or not
+
   $("body").append($mainscreen);
   $("#mainscreen").append($textbox);
   const user = JSON.parse(localStorage.getItem("user"));
@@ -154,10 +182,11 @@ const mainScreen = async () => {
   if (user !== null) {
     console.log("Localstorage user is not null");
     current_entities.username = user.user.username;
-    $("#maintextbox").append($inputname, $gamestart, $gamesettings, $logout);
+    $("#maintextbox").append($inputname, $gamestart, $btnmods, $logout);
   } else {
     console.log("Localstorage user is null");
-    $("#maintextbox").append($inputname, $gamestart, $gamesettings, $login);
+    current_entities.username = "";
+    $("#maintextbox").append($inputname, $gamestart, $btnmods, $login);
   }
 };
 

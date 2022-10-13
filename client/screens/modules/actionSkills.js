@@ -84,11 +84,11 @@ const actionSkills = () => {
                 );
               } else {
                 console.log("Invalid weapon type equipped for spell");
-                $actionText("Invalid weapon type equipped for spell", 1);
+                $actionText("Invalid weapon type equipped for spell", 0.5);
               }
             } else {
               console.log("Not enough mana for spell");
-              $actionText("Not enough mana for spell", 1);
+              $actionText("Not enough mana for spell", 0.5);
             }
           })
       );

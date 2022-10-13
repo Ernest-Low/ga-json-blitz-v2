@@ -37,8 +37,9 @@ const afterBattle = {
     $("#blackscreen")
       .append("<div>")
       .css({
-        width: "100%",
-        height: "100%",
+        position: "absolute",
+        width: "80vw",
+        "aspect-ratio": "16 / 9",
         "background-image": `url("${game_over}")`,
         "background-size": "100% 100%",
         "background-repeat": "no-repeat",
@@ -82,7 +83,7 @@ const afterBattle = {
       });
       console.dir(`items_list: ${items_list}`);
       const chance = Math.ceil(Math.random() * 100);
-      if (chance > 90) {
+      if (chance > 80) {
         const item = items_list[Math.floor(Math.random() * items_list.length)];
         return_items.push(item);
       }

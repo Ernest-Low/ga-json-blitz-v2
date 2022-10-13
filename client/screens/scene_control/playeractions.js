@@ -65,19 +65,19 @@ const player_actions = {
   damage_target: function (damage, target, type) {
     current_entities.current_turn = "inbetween";
     //  Seconds till enemy turn
-    turn_control.player_turn(5);
+    turn_control.player_turn(2.5);
 
     if (target.health >= damage) {
       update_hpmp(target, damage, 0);
       $actionText(
         `${this.critical_hit}You dealt ${damage} damage to ${target.name} with ${type}!`,
-        3
+        0.8
       );
     } else {
       update_hpmp(target, target.health, 0);
       $actionText(
         `${this.critical_hit}You overkilled ${target.name}, dealing ${damage} damage with ${type}!`,
-        3
+        0.8
       );
     }
   },

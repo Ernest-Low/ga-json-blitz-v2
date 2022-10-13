@@ -27,7 +27,6 @@ const monsterSchema = new Schema(
           ref: "Skills",
         },
       ],
-      default: [],
     },
     // status: [],    //  Future addition with buffs / debuffs
     img_src: { type: String, required: true }, //  Reference which sheet to be used

@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
   if (match) {
     //* Create JWTs
     const userobj = {
-      userName: foundUser.userName,
+      username: foundUser.username,
     };
     const accessToken = jwt.sign(userobj, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: "7d",

@@ -6,6 +6,7 @@ import monsters from "../../data_files/data_monster";
 
 const zone_control = () => {
   //  Create array of monster objects based on enemies present in zone
+  console.dir(current_entities.zone);
   const zone_list = current_entities.zone.enemy_type.map((obj) => {
     return monsters.filter((obj2) => {
       return obj == obj2.id;

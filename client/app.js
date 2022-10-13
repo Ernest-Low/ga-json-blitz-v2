@@ -1,5 +1,7 @@
-import mainScreen from "./screens/mainscreen.js";
 import $ from "jquery";
+
+import jsoninit from "./screens/modules/jsoninit.js";
+import mainScreen from "./screens/mainscreen.js";
 
 //  Back blackscreen
 $("body").append(
@@ -16,4 +18,5 @@ $("body").append(
   })
 );
 
+jsoninit();
 mainScreen(); // Initialize Mainscreen

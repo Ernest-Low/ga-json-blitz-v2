@@ -11,7 +11,6 @@ const UserSchema = new mongoose.Schema(
           ref: "Savefile",
         },
       ],
-      default: [],
     },
   },
 

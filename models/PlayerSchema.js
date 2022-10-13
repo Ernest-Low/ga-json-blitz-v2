@@ -24,7 +24,6 @@ const playerSchema = new Schema(
           ref: "Items",
         },
       ],
-      default: [],
     },
     skills: {
       type: [
@@ -33,7 +32,6 @@ const playerSchema = new Schema(
           ref: "Skills",
         },
       ],
-      default: [],
     },
     // status: [],  //  Future addition, for buffs / debuffs
     img_src: { type: String, required: true }, //  Reference which sheet to be used

@@ -8,7 +8,7 @@ const current_entities = {
   username: "",
   players: [],
   gold: 0,
-  items: [2001], //  Should give the healthpot via a different method
+  items: [],
   monsters: [],
   zone: {},
   currentplayer: 0,
