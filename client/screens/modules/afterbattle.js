@@ -35,7 +35,7 @@ const afterBattle = {
     //!  Add a restart button
     //*  Didn't have time for now, but it's needed
     $("#blackscreen")
-      .append("div")
+      .append("<div>")
       .css({
         width: "100%",
         height: "100%",
@@ -77,17 +77,17 @@ const afterBattle = {
           obj.drop_level >= lower_cap &&
           obj.drop_level <= monster.level
         ) {
-          return obj;
+          return structuredClone(obj);
         }
       });
-      console.log(`items_list: ${items_list}`);
+      console.dir(`items_list: ${items_list}`);
       const chance = Math.ceil(Math.random() * 100);
       if (chance > 90) {
         const item = items_list[Math.floor(Math.random() * items_list.length)];
         return_items.push(item);
       }
     });
-    console.log(return_items);
+    console.dir(return_items);
     return return_items;
   },
 
@@ -108,9 +108,11 @@ const afterBattle = {
     hero.agility += 1;
     hero.intelligence += 1;
     hero.health_max += 10;
+    hero.health += 10;
     hero.mana_max += 2;
+    hero.mana += 2;
     //  Calculate new exp required
-    hero.exp_req = 15 * Math.pow(hero.level, 2) + 85 * hero.level;
+    hero.exp_req = 15 * Math.pow(1 + hero.level, 2) + 85 * (1 + hero.level);
     console.log(
       `$Hero now level: ${hero.level}, requires ${hero.exp_req} exp to level up.`
     );
@@ -210,7 +212,7 @@ const afterBattle = {
     //  Money picture
     const $goldpic = $("<div>").css({
       width: "35%",
-      height: "30%",
+      height: "40%",
       "background-image": `url("${currency_coin}")`,
       "background-size": "100% 100%",
       "background-repeat": "no-repeat",
@@ -226,7 +228,7 @@ const afterBattle = {
 
       //  Add item ids to inventory
       items_gained.forEach((obj) => {
-        current_entities.items.push(obj.id);
+        current_entities.items.push(structuredClone(obj));
       });
 
       $itemdrop.css({
@@ -312,11 +314,11 @@ const afterBattle = {
     //  Regenerate hero
     current_entities.monsters = [];
     current_entities.players.forEach((obj) => {
-      obj.health = Math.ceil(obj.health * 1.25);
+      obj.health = obj.health + Math.floor(obj.health_max * 0.25);
       if (obj.health > obj.health_max) {
         obj.health = obj.health_max;
       }
-      obj.mana = Math.ceil(obj.mana * 1.20);
+      obj.mana = obj.mana + Math.floor(obj.mana_max * 0.2);
       if (obj.mana > obj.mana_max) {
         obj.mana = obj.mana_max;
       }
@@ -380,7 +382,7 @@ const afterBattle = {
           .attr("id", "btnshop")
           .css({
             cursor: "pointer",
-            width: "80%",
+            width: "100%",
             height: "100%",
             color: "ghostwhite",
             "background-color": "rgba(255,255,255,0)",
@@ -411,7 +413,7 @@ const afterBattle = {
           .attr("id", "btninventory")
           .css({
             cursor: "pointer",
-            width: "80%",
+            width: "100%",
             height: "100%",
             color: "ghostwhite",
             "background-color": "rgba(255,255,255,0)",

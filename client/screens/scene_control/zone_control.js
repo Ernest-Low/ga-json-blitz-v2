@@ -13,15 +13,18 @@ const zone_control = () => {
   });
 
   console.log(`Zone List of monsters: ${zone_list}`);
-  //  For every 10 levels, increase level variance range by 1 (starts at 2)
+  //  For every 5 levels, increase level variance range by 1 (starts at 1)
+  //  Lower level variance is half the upper level variance
   const player_level =
     current_entities.players[current_entities.currentplayer].level;
-  const level_variance_diff = 2 + Math.floor(player_level / 10);
+  const level_variance_diff = 1 + Math.floor(player_level / 5);
+  let lower_level_variance_diff = Math.ceil(level_variance_diff / 2);
+  if (lower_level_variance_diff < 2) lower_level_variance_diff = 2;
 
   //  Based on level variance, filter out monsters that fit criteria (exception possible?)
   const new_monsters = zone_list.filter((monster) => {
     if (
-      monster.level >= player_level - level_variance_diff &&
+      monster.level >= player_level - lower_level_variance_diff &&
       monster.level <= player_level + level_variance_diff
     ) {
       return monster;
@@ -34,7 +37,7 @@ const zone_control = () => {
   const picked_enemy =
     new_monsters[Math.floor(Math.random() * new_monsters.length)];
   console.log(picked_enemy);
-  current_entities.monsters.push(JSON.parse(JSON.stringify(picked_enemy)));
+  current_entities.monsters.push(structuredClone(picked_enemy));
 };
 
 export default zone_control;
