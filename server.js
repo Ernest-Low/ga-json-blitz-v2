@@ -23,8 +23,8 @@ const app = express();
 app.use(express.static("./client/dist/"));
 
 //middleware
-app.use(cors())
-// app.use(cors(corsOptions));
+// app.use(cors())
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/login", loginController);
