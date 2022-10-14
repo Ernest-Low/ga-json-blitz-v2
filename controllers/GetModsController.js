@@ -4,7 +4,7 @@ const authCheck = require("../middleware/authCheck");
 
 const Mods = require("../models/ModSchema");
 
-router.post("/all", authCheck, async (req, res) => {
+router.post("/all", async (req, res) => {
   console.log("Trying to call mongodb");
   try {
     const allmods = await Mods.find(
@@ -30,15 +30,18 @@ router.post("/name", async (req, res) => {
   }
 });
 
-router.post("/create", async (req, res) => {
+router.post("/create", authCheck, async (req, res) => {
   console.log("Doing a create");
+  if (req.body.user.username !== req.body?.mod?.author) {
+    return res
+      .status(401)
+      .send({ status: 401, payload: "Unauthorized tampering" });
+  }
   try {
     const mod = await Mods.find({ name: req.body.mod?.name }).exec();
-    if (!mod || mod.length >= 1)
-      return res
-        .status(400)
-        .send({ status: 406, payload: "Mod Name Issue" });
-
+    // if (!mod || mod.length >= 1)
+    if (mod.length >= 1)
+      return res.status(400).send({ status: 406, payload: "Mod Name Issue" });
     Mods.create(req.body.mod);
     res.status(201).send({ status: 201, payload: "Mod Created" });
   } catch (error) {
@@ -46,12 +49,17 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.post("/edit", async (req, res) => {
+router.post("/edit", authCheck, async (req, res) => {
   console.log("Doing an edit");
   console.dir(req.body);
+  if (req.body.user.username !== req.body?.mod?.author) {
+    return res
+      .status(401)
+      .send({ status: 401, payload: "Unauthorized tampering" });
+  }
   try {
     const mod = await Mods.find({ _id: req.body.id });
-    console.dir(mod);
+    console.dir(mod[0]);
     if (mod.length == 0) {
       return res.status(401).send({ status: 401, payload: "Mod not found" });
     }
@@ -84,14 +92,18 @@ router.post("/edit", async (req, res) => {
   }
 });
 
-router.post("/delete", async (req, res) => {
+router.post("/delete", authCheck, async (req, res) => {
   console.log("Doing a deletion");
   try {
     const mod = await Mods.find({ _id: req.body.id }).exec();
     if (mod.length == 0) {
       return res.status(401).send({ status: 401, payload: "Mod not found" });
     }
-
+    if (req.body.user.username !== mod[0].author) {
+      return res
+        .status(401)
+        .send({ status: 401, payload: "Unauthorized tampering" });
+    }
     Mods.findByIdAndDelete(req.body.id, function (err, docs) {
       if (err) {
         console.log(err);

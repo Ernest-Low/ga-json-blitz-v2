@@ -7,6 +7,7 @@ const corsOptions = require("./config/corsOptions");
 const loginController = require("./controllers/LoginController");
 const registerController = require("./controllers/RegisterController");
 const getmodsController = require("./controllers/GetModsController");
+const accesscontroller = require("./controllers/AccessController");
 
 const Mods = require("./models/ModSchema");
 
@@ -23,13 +24,14 @@ const app = express();
 app.use(express.static("./client/dist/"));
 
 //middleware
-app.use(cors())
+app.use(cors());
 // app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/login", loginController);
 app.use("/api/register", registerController);
 app.use("/api/mods/", getmodsController);
+app.use("/api/refresh/", accesscontroller);
 
 app.get("/api/seed", async (req, res) => {
   console.log("seeding");

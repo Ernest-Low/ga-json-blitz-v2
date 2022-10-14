@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preinstall": "NPM_CONFIG_PRODUCTION=false",
     "preview": "vite preview"
   },
   "devDependencies": {

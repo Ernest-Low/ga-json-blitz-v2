@@ -1,7 +1,8 @@
 import $ from "jquery";
+import axios from "axios";
 
 import current_entities from "./entities";
-import player from "../data_files/data_player.js";
+import players from "../data_files/data_players.js";
 import zones from "../data_files/data_zone";
 import create_battle from "./modules/create_battle";
 import $account from "./modules/account";
@@ -88,7 +89,7 @@ const mainScreen = async () => {
       }
 
       //!  Call the player, temporary
-      let copiedhero = structuredClone(player[0]);
+      let copiedhero = structuredClone(players[0]);
       current_entities.players.push(copiedhero);
       current_entities.players[0].id = "p1";
 
@@ -183,8 +184,31 @@ const mainScreen = async () => {
   console.dir(user);
   if (user !== null) {
     console.log("Localstorage user is not null");
-    current_entities.username = user.user.username;
-    $("#maintextbox").append($inputname, $gamestart, $btnmods, $logout);
+    user.user.accessToken;
+
+    try {
+      const response = await axios.post("/api/refresh/", {
+        username: user.user.username,
+        accessToken: user.user.accessToken,
+      });
+
+      const localuser = {
+        user: {
+          username: user.user.username,
+          accessToken: response.data.payload.accessToken,
+        },
+      };
+      localStorage.setItem("user", JSON.stringify(localuser));
+      current_entities.username = user.user.username;
+      current_entities.savefiles = response.data.payload.savefiles;
+      $("#maintextbox").append($inputname, $gamestart, $btnmods, $logout);
+    } catch (err) {
+      console.log("Accesstoken Not valid");
+      current_entities.username = "";
+      localStorage.removeItem("user");
+      $("#mainscreen").remove();
+      mainScreen();
+    }
   } else {
     console.log("Localstorage user is null");
     current_entities.username = "";

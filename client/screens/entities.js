@@ -5,12 +5,18 @@
 //? Push entities in here.
 
 const current_entities = {
+  //  Saved Variables
   username: "",
   players: [],
   gold: 0,
   items: [],
   monsters: [],
   zone: {},
+
+  //* Online Savefiles
+  savefiles: [],
+
+  // Non-Saved variables
   currentplayer: 0,
   currentmonster: 0,
   current_turn: "player",

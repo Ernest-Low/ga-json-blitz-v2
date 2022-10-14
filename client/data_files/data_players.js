@@ -35,6 +35,6 @@
 // scale: { type: [Number], default: [1, 1] }, //  Image size
 // img_translate: { type: [String], default: ["0%", "0%"] }, //  Img adjustment
 
-const player = []
+const players = []
 
-export default player;
+export default players;

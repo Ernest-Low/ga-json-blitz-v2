@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
       username: foundUser.username,
     };
     const accessToken = jwt.sign(userobj, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "1d",
     });
     console.log(accessToken);
     //* Send authorized user data and access token to user

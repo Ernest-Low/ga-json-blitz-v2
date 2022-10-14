@@ -2,10 +2,10 @@ import $ from "jquery";
 import axios from "axios";
 
 import modchanges from "./modules/modchanges";
+import current_entities from "./entities";
 
 import rectangleh from "/assets/ui/rectangleh.jpg";
 import redrectangle from "/assets/ui/redrectangle.png";
-import current_entities from "./entities";
 
 const modscreen = {
   modpack_id: "",
@@ -16,7 +16,7 @@ const modscreen = {
     private: false,
     items: [],
     monsters: [],
-    player: [],
+    players: [],
     skills_list: [],
     zones: [],
   },
@@ -175,7 +175,7 @@ const modscreen = {
                                 console.dir(response);
                                 if (response.data.status == 201) {
                                   console.log("Successful creation of mod");
-                                  modchanges.current_modpack = structuredClone(
+                                  modchanges.current_modpack = JSON.parse(
                                     $textarea[0].value
                                   );
                                   modchanges.modpack_active = true;
@@ -266,7 +266,7 @@ const modscreen = {
             modchanges.current_modpack = {
               items: [],
               monsters: [],
-              player: [],
+              players: [],
               skills_list: [],
               zones: [],
             };
@@ -301,7 +301,6 @@ const modscreen = {
       try {
         const response = await axios.post("/api/mods/all", {
           username: current_entities.username,
-          accessToken: user.user.accessToken,
         });
         console.dir(response);
         if (response.data.status == 200) {
@@ -360,8 +359,6 @@ const modscreen = {
                               const response = await axios.post(
                                 "/api/mods/name",
                                 {
-                                  username: current_entities.username,
-                                  accessToken: user.user.accessToken,
                                   id: emod._id,
                                 }
                               );
@@ -382,8 +379,8 @@ const modscreen = {
                                 this.current_modpack.monsters = structuredClone(
                                   response.data.payload[0].monsters
                                 );
-                                this.current_modpack.player = structuredClone(
-                                  response.data.payload[0].player
+                                this.current_modpack.players = structuredClone(
+                                  response.data.payload[0].players
                                 );
                                 this.current_modpack.skills_list =
                                   structuredClone(
@@ -463,8 +460,9 @@ const modscreen = {
                                         } catch (err) {
                                           console.log(err);
                                         }
-                                        modchanges.current_modpack =
-                                          structuredClone($textarea[0].value);
+                                        modchanges.current_modpack = JSON.parse(
+                                          $textarea[0].value
+                                        );
                                         modchanges.modpack_active = true;
                                         $modscreen.remove();
                                       })
@@ -513,7 +511,7 @@ const modscreen = {
                                 modchanges.current_modpack = {
                                   items: [],
                                   monsters: [],
-                                  player: [],
+                                  players: [],
                                   skills_list: [],
                                   zones: [],
                                 };
@@ -550,8 +548,6 @@ const modscreen = {
                               const response = await axios.post(
                                 "/api/mods/name",
                                 {
-                                  username: current_entities.username,
-                                  accessToken: user.user.accessToken,
                                   id: emod._id,
                                 }
                               );
@@ -574,9 +570,9 @@ const modscreen = {
                                   structuredClone(
                                     response.data.payload[0].monsters
                                   );
-                                modchanges.current_modpack.player =
+                                modchanges.current_modpack.players =
                                   structuredClone(
-                                    response.data.payload[0].player
+                                    response.data.payload[0].players
                                   );
                                 modchanges.current_modpack.skills_list =
                                   structuredClone(
@@ -664,8 +660,6 @@ const modscreen = {
                               const response = await axios.post(
                                 "/api/mods/name",
                                 {
-                                  username: current_entities.username,
-                                  accessToken: user.user.accessToken,
                                   id: emod._id,
                                 }
                               );
@@ -686,8 +680,8 @@ const modscreen = {
                                 this.current_modpack.monsters = structuredClone(
                                   response.data.payload[0].monsters
                                 );
-                                this.current_modpack.player = structuredClone(
-                                  response.data.payload[0].player
+                                this.current_modpack.players = structuredClone(
+                                  response.data.payload[0].players
                                 );
                                 this.current_modpack.skills_list =
                                   structuredClone(
@@ -744,8 +738,6 @@ const modscreen = {
                               const response = await axios.post(
                                 "/api/mods/name",
                                 {
-                                  username: current_entities.username,
-                                  accessToken: user.user.accessToken,
                                   id: emod._id,
                                 }
                               );
@@ -768,9 +760,9 @@ const modscreen = {
                                   structuredClone(
                                     response.data.payload[0].monsters
                                   );
-                                modchanges.current_modpack.player =
+                                modchanges.current_modpack.players =
                                   structuredClone(
-                                    response.data.payload[0].player
+                                    response.data.payload[0].players
                                   );
                                 modchanges.current_modpack.skills_list =
                                   structuredClone(
