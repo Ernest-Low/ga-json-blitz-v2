@@ -102,6 +102,8 @@ Future Multiplayer
 User Accounts
     User Accounts -> Used to save mods / progress
 
+    > Change password for user account needed
+
     Progress is saved at end of each stage (subject to change)
     Saved progress goes into localstorage
     > Additionally goes into user account if logged in

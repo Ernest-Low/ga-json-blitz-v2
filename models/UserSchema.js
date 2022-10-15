@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SavefileSchema = new Schema({
+  name: { type: String, required: true },
+  active: { type: Boolean, default: false },
+  date: { type: String },
+  modpack: { type: String, default: "None" },
   players: [{}],
   gold: { type: Number, default: 0 },
   items: [{}],

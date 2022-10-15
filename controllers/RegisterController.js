@@ -19,6 +19,20 @@ router.post("/", async (req, res) => {
         const newUserPasswordIsHash = {
           ...newUser,
           password: bcrypt.hashSync(newUser.password, 10),
+          savefiles: [
+            {
+              name: "Empty Online Savefile 1",
+              active: false,
+              modpack: "None",
+              gold: 0,
+            },
+            {
+              name: "Empty Online Savefile 2",
+              active: false,
+              modpack: "None",
+              gold: 0,
+            },
+          ],
         };
         User.create(newUserPasswordIsHash, (error, user) => {
           res.status(201).send({ status: 201, payload: user });

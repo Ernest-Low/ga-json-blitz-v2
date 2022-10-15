@@ -189,7 +189,7 @@
       "img_src": "monster_sheet_1",
       "sprite_pos": ["16.67%", "0%"],
       "img_scale": [2.5, 2.5],
-      "img_translate": ["0%", "0%"]
+      "img_translate": [0, 0]
     },
     {
       "name": "Orc",
@@ -214,7 +214,7 @@
       "img_src": "monster_sheet_1",
       "sprite_pos": ["66.67%", "0%"],
       "img_scale": [1.6, 1.6],
-      "img_translate": ["5%", "5%"]
+      "img_translate": [5, 5]
     },
     {
       "name": "Twister",
@@ -239,7 +239,7 @@
       "img_src": "monster_sheet_1",
       "sprite_pos": ["33.33%", "20%"],
       "img_scale": [1.5, 1.2],
-      "img_translate": ["0%", "0%"]
+      "img_translate": [0, 0]
     },
     {
       "name": "Orc Shaman",
@@ -264,7 +264,7 @@
       "img_src": "monster_sheet_1",
       "sprite_pos": ["16.67%", "40%"],
       "img_scale": [1.9, 1.6],
-      "img_translate": ["-20%", "0%"]
+      "img_translate": [-20, 0]
     },
     {
       "name": "Skeleton Archer",
@@ -289,7 +289,7 @@
       "img_src": "monster_sheet_1",
       "sprite_pos": ["83.33%", "0%"],
       "img_scale": [1.7, 1.9],
-      "img_translate": ["-15%", "5%"]
+      "img_translate": [-15, 5]
     },
     {
       "name": "Skeletal Hound",
@@ -314,7 +314,7 @@
       "img_src": "monster_sheet_1",
       "sprite_pos": ["16.67%", "100%"],
       "img_scale": [1.6, 1.6],
-      "img_translate": ["-5%", "5%"]
+      "img_translate": [-5, 5]
     },
     {
       "name": "Harpy",
@@ -339,7 +339,7 @@
       "img_src": "monster_sheet_1",
       "sprite_pos": ["33.33%", "0%"],
       "img_scale": [1.8, 1.5],
-      "img_translate": ["8%", "5%"]
+      "img_translate": [8, 5]
     }
   ],
   "players": [
@@ -358,45 +358,8 @@
       "strength": 5,
       "agility": 5,
       "intelligence": 5,
-      "equipment": [
-        {
-          "name": "Rusty Sword",
-          "id": 1001,
-          "drop_level": 2,
-          "rarity": "Common",
-          "damage": 4,
-          "damage_spill": 2,
-          "strength": 0,
-          "agility": 0,
-          "intelligence": 0,
-          "health": 0,
-          "mana": 0,
-          "scaling_str": 0.2,
-          "scaling_agi": 0,
-          "scaling_int": 0,
-          "type": "Melee",
-          "img_src": "image_data/icons/weapons/sword/sword_1.png",
-          "sprite_pos": [],
-          "gold_value": 50
-        }
-      ],
-      "skills": [
-        {
-          "name": "Power Slash",
-          "id": 1,
-          "health_cost": 0,
-          "mana_cost": 6,
-          "cooldown": 0,
-          "damage": 9,
-          "scaling_str": 0.5,
-          "scaling_agi": 0,
-          "scaling_int": 0,
-          "damage_spill": 2,
-          "type": "skill",
-          "weapon": "Melee",
-          "gold_cost": 50
-        }
-      ],
+      "equipment": [],
+      "skills": [],
       "status": [],
       "img_src": "character_sheet_1",
       "model_size": ["10%", "35%"],

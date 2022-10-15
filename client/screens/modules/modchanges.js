@@ -9,7 +9,7 @@ const modchanges = {
   modpack_active: false,
 
   current_modpack: {
-    name: "",
+    name: "None",
     items: [],
     monsters: [],
     players: [],

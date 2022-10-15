@@ -15,7 +15,7 @@ const $entity_window = (entity) => {
       width: "100%",
       height: "60%",
       scale: `${entity.img_scale[0]} ${entity.img_scale[1]}`,
-      translate: `${entity.img_translate[0]} ${entity.img_translate[1]}`,
+      translate: `${entity.img_translate[0]}% ${entity.img_translate[1]}%`,
     });
 
   //* Spritesheet assignment

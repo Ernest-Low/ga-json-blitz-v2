@@ -264,6 +264,7 @@ const modscreen = {
           .on("click", () => {
             console.log("Mod BtnClear clicked");
             modchanges.current_modpack = {
+              name: "None",
               items: [],
               monsters: [],
               players: [],
@@ -286,7 +287,7 @@ const modscreen = {
       })
       .append(
         $("<button>")
-          .attr("id", `modbtnsave`)
+          .attr("id", `modbtnback`)
           .addClass("actionbutton")
           .css(this.redbuttoncss)
           .text("BACK")

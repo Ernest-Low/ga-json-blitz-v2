@@ -14,9 +14,11 @@ const current_entities = {
   zone: {},
 
   //* Online Savefiles
-  savefiles: [],
+  savefiles_local: [{ name: "Empty Local Savefile", active: false }],
+  savefiles_online: [],
 
   // Non-Saved variables
+  game_active: false,
   currentplayer: 0,
   currentmonster: 0,
   current_turn: "player",
