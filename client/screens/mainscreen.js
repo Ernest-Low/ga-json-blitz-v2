@@ -1,18 +1,12 @@
 import $ from "jquery";
 import axios from "axios";
 
-import items from "../data_files/data_items";
-import skills_list from "../data_files/data_skills";
 import current_entities from "./entities";
 
-import players from "../data_files/data_players.js";
-import zones from "../data_files/data_zone";
-import create_battle from "./modules/create_battle";
 import $account from "./modules/account";
 import modscreen from "./modscreen";
-import jsoninit from "./modules/jsoninit";
-import modchanges from "./modules/modchanges";
 import saveload from "./modules/saveload";
+import selectchar from "./modules/selectchar";
 
 import background_img from "/assets/Game_Landing_Page.jpg";
 
@@ -50,23 +44,6 @@ const mainScreen = async () => {
     margin: "0 0 2.5% 0",
   });
 
-  // const $inputname = $("<input>")
-  //   .attr({
-  //     type: "text",
-  //     id: "inputname",
-  //     placeholder: "Your Hero Name",
-  //     value: "",
-  //   })
-  //   .css({
-  //     color: "white",
-  //     "background-color": "rgba(0,0,0,0.8)",
-  //     "font-size": "1.5vw",
-  //     width: "100%",
-  //     height: "25%",
-  //     "font-family": "Alagard",
-  //     border: "none",
-  //   });
-
   const $saveload = $("<button>")
     .addClass("actionbutton")
     .attr("id", "mainsaveload")
@@ -103,50 +80,7 @@ const mainScreen = async () => {
     .on("click", () => {
       console.log("Start Clicked");
 
-      //* Reset json state
-      jsoninit();
-      //! Put in mods!
-      if (modchanges.modpack_active) {
-        modchanges.updatelist();
-      }
-
-      //!  Call the player, temporary
-      let copiedhero = structuredClone(players[0]);
-      current_entities.players.push(copiedhero);
-      current_entities.players[0].id = "p1";
-
-      //! Assigning name for hero
-      current_entities.players[0].name = "Guts";
-      // current_entities.players[0].name = $("#inputname").val().trim() || "Guts";
-
-      //! Staring weapon (Rusty Sword)
-      const starting_weapon = items.filter((z) => z.id == 1001);
-      current_entities.players[0].equipment.push(
-        structuredClone(starting_weapon[0])
-      );
-
-      //! Starting Skill (Power Slash)
-      const starting_skill = skills_list.filter((z) => z.id == 1);
-      current_entities.players[0].skills.push(
-        structuredClone(starting_skill[0])
-      );
-
-      //! Giving a healthpot to begin (id 4001)
-      const starting_item = items.filter((z) => z.id == 4001);
-      current_entities.items.push(structuredClone(starting_item[0]));
-
-      //! Declaring castle zone (temp)
-      const current_zone = zones.filter((z) => z.name == "Castle")[0];
-      current_entities.zone = structuredClone(current_zone);
-
-      //* Set game active (move to character screen when game actually starts)
-      current_entities.game_active = true;
-
-      $("#mainscreen").fadeOut(2000);
-      setTimeout(() => {
-        create_battle();
-        $("#mainscreen").remove();
-      }, 2000);
+      selectchar.mainscreen();
     });
 
   const $btnmods = $("<button>")
