@@ -4,10 +4,12 @@
 
 //* Use after keywords for ids
 import $ from "jquery";
+
 import current_entities from "../entities.js";
 import items from "../../data_files/data_items.js";
 import iteminfo from "./iteminfo.js";
 import create_battle from "./create_battle.js";
+import saveload from "./saveload.js";
 
 import game_over from "/assets/ui/gameover.png";
 import victory2 from "/assets/ui/victory2.png";
@@ -367,37 +369,6 @@ const afterBattle = {
           })
       );
 
-    const $shop = $("<div>")
-      .css({
-        flex: "none",
-        width: "25%",
-        height: "50%",
-        "background-image": `url("${greenrect}")`,
-        "background-size": "100% 100%",
-        "background-repeat": "no-repeat",
-        "object-fit": "contain",
-      })
-      .append(
-        $("<button>")
-          .addClass("actionbutton")
-          .attr("id", "btnshop")
-          .css({
-            cursor: "pointer",
-            width: "100%",
-            height: "100%",
-            color: "ghostwhite",
-            "background-color": "rgba(255,255,255,0)",
-            "font-size": "1.5vw",
-            "text-align": "center",
-            border: "none",
-            "font-family": "Alagard",
-          })
-          .text("Shop")
-          .on("click", () => {
-            console.log("btnshop clicked");
-          })
-      );
-
     const $inventory = $("<div>")
       .css({
         flex: "none",
@@ -423,14 +394,46 @@ const afterBattle = {
             border: "none",
             "font-family": "Alagard",
           })
-          .text("Inventory")
+          .text("Inventory/Shop")
           .on("click", () => {
             console.log("btninventory clicked");
           })
       );
 
+    const $saveload = $("<div>")
+      .css({
+        flex: "none",
+        width: "25%",
+        height: "50%",
+        "background-image": `url("${greenrect}")`,
+        "background-size": "100% 100%",
+        "background-repeat": "no-repeat",
+        "object-fit": "contain",
+      })
+      .append(
+        $("<button>")
+          .addClass("actionbutton")
+          .attr("id", "afterbtnsaveload")
+          .css({
+            cursor: "pointer",
+            width: "100%",
+            height: "100%",
+            color: "ghostwhite",
+            "background-color": "rgba(255,255,255,0)",
+            "font-size": "1.5vw",
+            "text-align": "center",
+            border: "none",
+            "font-family": "Alagard",
+          })
+          .text("Save/Load")
+          .on("click", () => {
+            console.log("Afterscreen Save/Load clicked");
+            saveload.mainscreen();
+          })
+      );
+
     $golddrop.append($goldtext, $goldpic);
-    $afterbottom.append($inventory, $nextmatch, $shop);
+    $afterbottom.append($saveload, $nextmatch, $inventory);
 
     $aftermiddle.append($golddrop, $itemdrop, $expgain);
     $("body").append($afterscreen);

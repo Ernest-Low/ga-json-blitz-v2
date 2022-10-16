@@ -8,6 +8,7 @@ const loginController = require("./controllers/LoginController");
 const registerController = require("./controllers/RegisterController");
 const getmodsController = require("./controllers/GetModsController");
 const accesscontroller = require("./controllers/AccessController");
+const savefilecontroller = require("./controllers/SaveFileController");
 
 const Mods = require("./models/ModSchema");
 
@@ -32,6 +33,7 @@ app.use("/api/login", loginController);
 app.use("/api/register", registerController);
 app.use("/api/mods/", getmodsController);
 app.use("/api/refresh/", accesscontroller);
+app.use("/api/saves/", savefilecontroller);
 
 app.get("/api/seed", async (req, res) => {
   console.log("seeding");

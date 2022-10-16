@@ -21,15 +21,15 @@ router.post("/", async (req, res) => {
           password: bcrypt.hashSync(newUser.password, 10),
           savefiles: [
             {
-              name: "Empty Online Savefile 1",
+              name: "Online Savefile 1",
               active: false,
-              modpack: "None",
+              modpack: "",
               gold: 0,
             },
             {
-              name: "Empty Online Savefile 2",
+              name: "Online Savefile 2",
               active: false,
-              modpack: "None",
+              modpack: "",
               gold: 0,
             },
           ],

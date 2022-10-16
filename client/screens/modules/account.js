@@ -306,6 +306,7 @@ const $account = () => {
               user: {
                 username: name_input,
                 accessToken: response.data.payload.accessToken,
+                id: response.data.payload.id,
               },
             };
             localStorage.setItem("user", JSON.stringify(localuser));

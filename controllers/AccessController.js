@@ -4,7 +4,7 @@ const authCheck = require("../middleware/authCheck");
 const jwt = require("jsonwebtoken");
 
 router.post("/", authCheck, async (req, res) => {
-  console.log("Acesstoken Still valid, refreshing");
+  console.log("Accesstoken Still valid, refreshing");
   const foundUser = req.body.user;
   //* Create JWTs
   const userobj = {
@@ -17,7 +17,7 @@ router.post("/", authCheck, async (req, res) => {
   //* Send authorized user data and access token to user
   res.status(200).send({
     status: 200,
-    payload: { accessToken, savefiles: foundUser.savefiles },
+    payload: { id: foundUser._id, accessToken, savefiles: foundUser.savefiles },
   });
 });
 

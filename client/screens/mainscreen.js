@@ -71,6 +71,7 @@ const mainScreen = async () => {
     .addClass("actionbutton")
     .attr("id", "mainsaveload")
     .css({
+      order: "-1",
       cursor: "pointer",
       "background-color": "rgba(0,0,0,0.8)",
       color: "white",
@@ -137,6 +138,9 @@ const mainScreen = async () => {
       //! Declaring castle zone (temp)
       const current_zone = zones.filter((z) => z.name == "Castle")[0];
       current_entities.zone = structuredClone(current_zone);
+
+      //* Set game active (move to character screen when game actually starts)
+      current_entities.game_active = true;
 
       $("#mainscreen").fadeOut(2000);
       setTimeout(() => {
@@ -215,6 +219,19 @@ const mainScreen = async () => {
   $("body").append($mainscreen);
   $("#mainscreen").append($textbox);
 
+  //* Add save/load button
+  const localsavefile = JSON.parse(localStorage.getItem("savefile"));
+
+  if (localsavefile !== null) {
+    console.log("Savefiles found, load button");
+    current_entities.savefiles_local[0] = structuredClone(
+      localsavefile.savefile
+    );
+    $("#maintextbox").prepend($saveload);
+    console.log("Show local saved files");
+    console.dir(current_entities.savefiles_local[0]);
+  }
+
   //  User account authentication / processes
   const user = JSON.parse(localStorage.getItem("user"));
   console.dir(user);
@@ -225,11 +242,11 @@ const mainScreen = async () => {
         username: user.user.username,
         accessToken: user.user.accessToken,
       });
-
       const localuser = {
         user: {
           username: user.user.username,
           accessToken: response.data.payload.accessToken,
+          id: response.data.payload.id,
         },
       };
       localStorage.setItem("user", JSON.stringify(localuser));
@@ -238,6 +255,7 @@ const mainScreen = async () => {
       $("#maintextbox").append($gamestart, $btnmods, $logout);
     } catch (err) {
       console.log("Accesstoken Not valid");
+      console.dir(err);
       current_entities.username = "";
       localStorage.removeItem("user");
       $("#mainscreen").remove();
@@ -337,17 +355,6 @@ const mainScreen = async () => {
   // );
 
   //  Check for savefile
-  const localsavefile = JSON.parse(localStorage.getItem("savefile"));
-
-  if (localsavefile !== null) {
-    console.log("Savefiles found, load button");
-    current_entities.savefiles_local[0] = structuredClone(
-      localsavefile.savefile
-    );
-    $("#maintextbox").prepend($saveload);
-    console.log("Show local saved files");
-    console.dir(current_entities.savefiles_local[0]);
-  }
 };
 
 export default mainScreen;

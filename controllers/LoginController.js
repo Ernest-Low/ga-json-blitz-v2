@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
     //* Send authorized user data and access token to user
     res.status(200).send({
       status: 200,
-      payload: { accessToken, savefiles: foundUser.savefiles },
+      payload: { id: foundUser._id ,accessToken, savefiles: foundUser.savefiles },
     });
   } else {
     res

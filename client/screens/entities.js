@@ -14,7 +14,7 @@ const current_entities = {
   zone: {},
 
   //* Online Savefiles
-  savefiles_local: [{ name: "Empty Local Savefile", active: false }],
+  savefiles_local: [{ name: "Local Savefile", active: false }],
   savefiles_online: [],
 
   // Non-Saved variables
