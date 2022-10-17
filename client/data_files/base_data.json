@@ -125,11 +125,11 @@
       "id": 4001,
       "drop_level": 1,
       "rarity": "Common",
-      "potency": 20,
+      "potency": 25,
       "type": "Health",
       "img_src": "consumables_spritesheet_1",
       "sprite_pos": ["66.67%", "0%"],
-      "gold_value": 20
+      "gold_value": 30
     },
     {
       "name": "Health Potion",
@@ -140,29 +140,29 @@
       "type": "Health",
       "img_src": "consumables_spritesheet_1",
       "sprite_pos": ["0%", "33.33%"],
-      "gold_value": 50
+      "gold_value": 100
     },
     {
       "name": "Basic Mana Potion",
       "id": 4003,
       "drop_level": 2,
       "rarity": "Common",
-      "potency": 20,
+      "potency": 10,
       "type": "Mana",
       "img_src": "consumables_spritesheet_1",
       "sprite_pos": ["0%", "66.67%"],
-      "gold_value": 20
+      "gold_value": 50
     },
     {
       "name": "Mana Potion",
       "id": 4004,
       "drop_level": 5,
       "rarity": "Common",
-      "potency": 40,
+      "potency": 15,
       "type": "Mana",
       "img_src": "consumables_spritesheet_1",
       "sprite_pos": ["33.33%", "66.67%"],
-      "gold_value": 50
+      "gold_value": 200
     }
   ],
   "monsters": [
@@ -344,7 +344,7 @@
   ],
   "players": [
     {
-      "name": "Greatsword Warrior",
+      "name": "Agnar",
       "d_id": "1",
       "id": "",
       "level": 0,
@@ -396,6 +396,21 @@
           "type": "skill",
           "weapon": "Melee",
           "gold_cost": 50
+        },
+        {
+          "name": "Rend",
+          "id": 7,
+          "health_cost": 4,
+          "mana_cost": 8,
+          "cooldown": 0,
+          "damage": 13,
+          "scaling_str": 0.35,
+          "scaling_agi": 0,
+          "scaling_int": 0,
+          "damage_spill": 4,
+          "type": "skill",
+          "weapon": "Melee",
+          "gold_cost": 250
         }
       ],
       "status": [],
@@ -406,7 +421,7 @@
       "img_translate": ["0%", "0%"]
     },
     {
-      "name": "Barbarian Warrior",
+      "name": "Mehzak",
       "d_id": "2",
       "id": "",
       "level": 0,
@@ -445,19 +460,34 @@
       ],
       "skills": [
         {
-          "name": "Power Slash",
-          "id": 1,
-          "health_cost": 0,
+          "name": "Charge",
+          "id": 4,
+          "health_cost": 2,
           "mana_cost": 6,
           "cooldown": 0,
-          "damage": 9,
-          "scaling_str": 0.5,
+          "damage": 11,
+          "scaling_str": 0.3,
           "scaling_agi": 0,
           "scaling_int": 0,
-          "damage_spill": 2,
+          "damage_spill": 3,
           "type": "skill",
           "weapon": "Melee",
-          "gold_cost": 50
+          "gold_cost": 200
+        },
+        {
+          "name": "Rend",
+          "id": 7,
+          "health_cost": 4,
+          "mana_cost": 8,
+          "cooldown": 0,
+          "damage": 13,
+          "scaling_str": 0.35,
+          "scaling_agi": 0,
+          "scaling_int": 0,
+          "damage_spill": 4,
+          "type": "skill",
+          "weapon": "Melee",
+          "gold_cost": 250
         }
       ],
       "status": [],
@@ -468,7 +498,7 @@
       "img_translate": ["0%", "0%"]
     },
     {
-      "name": "Templar Knight",
+      "name": "Zander",
       "d_id": "3",
       "id": "",
       "level": 0,
@@ -520,6 +550,21 @@
           "type": "skill",
           "weapon": "Melee",
           "gold_cost": 50
+        },
+        {
+          "name": "Charge",
+          "id": 4,
+          "health_cost": 2,
+          "mana_cost": 6,
+          "cooldown": 0,
+          "damage": 11,
+          "scaling_str": 0.3,
+          "scaling_agi": 0,
+          "scaling_int": 0,
+          "damage_spill": 3,
+          "type": "skill",
+          "weapon": "Melee",
+          "gold_cost": 200
         }
       ],
       "status": [],
@@ -530,7 +575,7 @@
       "img_translate": ["0%", "0%"]
     },
     {
-      "name": "Battle Mage",
+      "name": "Bran",
       "d_id": "4",
       "id": "",
       "level": 0,
@@ -582,6 +627,36 @@
           "type": "spell",
           "weapon": "Magic",
           "gold_cost": 50
+        },
+        {
+          "name": "Fire Bomb",
+          "id": 5,
+          "health_cost": 0,
+          "mana_cost": 10,
+          "cooldown": 0,
+          "damage": 13,
+          "scaling_str": 0,
+          "scaling_agi": 0,
+          "scaling_int": 0.6,
+          "damage_spill": 3,
+          "type": "spell",
+          "weapon": "Magic",
+          "gold_cost": 200
+        },
+        {
+          "name": "Flamethrower",
+          "id": 8,
+          "health_cost": 0,
+          "mana_cost": 15,
+          "cooldown": 0,
+          "damage": 15,
+          "scaling_str": 0,
+          "scaling_agi": 0,
+          "scaling_int": 0.65,
+          "damage_spill": 4,
+          "type": "spell",
+          "weapon": "Magic",
+          "gold_cost": 500
         }
       ],
       "status": [],
@@ -592,7 +667,7 @@
       "img_translate": ["0%", "0%"]
     },
     {
-      "name": "Rogue Ranger",
+      "name": "Heracles",
       "d_id": "5",
       "id": "",
       "level": 0,
@@ -644,6 +719,21 @@
           "type": "skill",
           "weapon": "Ranged",
           "gold_cost": 50
+        },
+        {
+          "name": "Rapid Fire",
+          "id": 6,
+          "health_cost": 0,
+          "mana_cost": 9,
+          "cooldown": 0,
+          "damage": 10,
+          "scaling_str": 0,
+          "scaling_agi": 0.38,
+          "scaling_int": 0,
+          "damage_spill": 3,
+          "type": "skill",
+          "weapon": "Ranged",
+          "gold_cost": 250
         }
       ],
       "status": [],
@@ -662,7 +752,7 @@
       "mana_cost": 6,
       "cooldown": 0,
       "damage": 9,
-      "scaling_str": 0.5,
+      "scaling_str": 0.3,
       "scaling_agi": 0,
       "scaling_int": 0,
       "damage_spill": 2,
@@ -679,7 +769,7 @@
       "damage": 8,
       "scaling_str": 0,
       "scaling_agi": 0,
-      "scaling_int": 0.75,
+      "scaling_int": 0.5,
       "damage_spill": 1,
       "type": "spell",
       "weapon": "Magic",
@@ -693,12 +783,103 @@
       "cooldown": 0,
       "damage": 8,
       "scaling_str": 0,
-      "scaling_agi": 0.65,
+      "scaling_agi": 0.35,
       "scaling_int": 0,
       "damage_spill": 3,
       "type": "skill",
       "weapon": "Ranged",
       "gold_cost": 50
+    },
+    {
+      "name": "Charge",
+      "id": 4,
+      "health_cost": 2,
+      "mana_cost": 6,
+      "cooldown": 0,
+      "damage": 11,
+      "scaling_str": 0.3,
+      "scaling_agi": 0,
+      "scaling_int": 0,
+      "damage_spill": 3,
+      "type": "skill",
+      "weapon": "Melee",
+      "gold_cost": 200
+    },
+    {
+      "name": "Fire Bomb",
+      "id": 5,
+      "health_cost": 0,
+      "mana_cost": 10,
+      "cooldown": 0,
+      "damage": 13,
+      "scaling_str": 0,
+      "scaling_agi": 0,
+      "scaling_int": 0.6,
+      "damage_spill": 3,
+      "type": "spell",
+      "weapon": "Magic",
+      "gold_cost": 200
+    },
+    {
+      "name": "Rapid Fire",
+      "id": 6,
+      "health_cost": 0,
+      "mana_cost": 9,
+      "cooldown": 0,
+      "damage": 10,
+      "scaling_str": 0,
+      "scaling_agi": 0.38,
+      "scaling_int": 0,
+      "damage_spill": 3,
+      "type": "skill",
+      "weapon": "Ranged",
+      "gold_cost": 250
+    },
+
+    {
+      "name": "Rend",
+      "id": 7,
+      "health_cost": 4,
+      "mana_cost": 8,
+      "cooldown": 0,
+      "damage": 13,
+      "scaling_str": 0.35,
+      "scaling_agi": 0,
+      "scaling_int": 0,
+      "damage_spill": 4,
+      "type": "skill",
+      "weapon": "Melee",
+      "gold_cost": 250
+    },
+    {
+      "name": "Flamethrower",
+      "id": 8,
+      "health_cost": 0,
+      "mana_cost": 15,
+      "cooldown": 0,
+      "damage": 15,
+      "scaling_str": 0,
+      "scaling_agi": 0,
+      "scaling_int": 0.65,
+      "damage_spill": 4,
+      "type": "spell",
+      "weapon": "Magic",
+      "gold_cost": 500
+    },
+    {
+      "name": "True Shot",
+      "id": 9,
+      "health_cost": 0,
+      "mana_cost": 11,
+      "cooldown": 0,
+      "damage": 11,
+      "scaling_str": 0,
+      "scaling_agi": 0.4,
+      "scaling_int": 0,
+      "damage_spill": 5,
+      "type": "skill",
+      "weapon": "Ranged",
+      "gold_cost": 600
     }
   ],
   "zones": [

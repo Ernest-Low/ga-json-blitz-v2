@@ -24,11 +24,13 @@ const player_actions = {
     let final_str = entity.strength;
     let final_agi = entity.strength;
     let final_int = entity.strength;
-    entity.equipment.forEach((element) => {
-      final_str += element.strength;
-      final_agi += element.agility;
-      final_int += element.intelligence;
-    });
+
+    //* Temporary: Equipment calculation for str/agi/int
+    // entity.equipment.forEach((element) => {
+    //   final_str += element.strength;
+    //   final_agi += element.agility;
+    //   final_int += element.intelligence;
+    // });
 
     let total_damage =
       multiplier.damage +
@@ -123,11 +125,13 @@ const player_actions = {
     let final_str = entity.strength;
     let final_agi = entity.strength;
     let final_int = entity.strength;
-    entity.equipment.forEach((element) => {
-      final_str += element.strength;
-      final_agi += element.agility;
-      final_int += element.intelligence;
-    });
+
+    //* Temporary: Equipment calculation for str/agi/int
+    // entity.equipment.forEach((element) => {
+    //   final_str += element.strength;
+    //   final_agi += element.agility;
+    //   final_int += element.intelligence;
+    // });
 
     let spell_damage =
       spell.damage +

@@ -161,7 +161,7 @@ const saveload = {
               }, 2000);
             } else if (this.selected_savefile.active == false) {
               $saveloadwarning.text("Cannot load empty savefile");
-            } else if (this.modpack_load_ok == true) {
+            } else if (this.modpack_load_ok == false) {
               $saveloadwarning.text(
                 "Unable to load, current modpack incompatiable"
               );

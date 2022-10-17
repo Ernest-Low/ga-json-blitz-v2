@@ -9,6 +9,25 @@ import $actionText from "../modules/actionText.js";
 import afterBattle from "../modules/afterbattle.js";
 
 const turn_control = {
+  //  Remove equipment stats
+  calculate_equipment: function () {
+    current_entities.players.forEach((character) => {
+      character.equipment.forEach((element) => {
+        character.health_max -= element.health;
+        character.mana_max -= element.mana;
+        character.strength -= element.strength;
+        character.agility -= element.agility;
+        character.intelligence -= element.intelligence;
+      });
+      if (character.health > character.health_max) {
+        character.health = character.health_max;
+      }
+      if (character.mana > character.mana_max) {
+        character.mana = character.mana_max;
+      }
+    });
+  },
+
   //  Linked to checking all dead enemies, checks if there are no remaining entities
   battle_over: function () {
     //  Defeat (all players dead)
@@ -42,6 +61,7 @@ const turn_control = {
       console.log("VICTORY!");
       current_entities.current_turn = "ended";
       current_entities.fight_status = "VICTORY!";
+      this.calculate_equipment();
       afterBattle.zone_clear_check();
       $("#battlescreen").fadeOut(1000);
       setTimeout(() => {

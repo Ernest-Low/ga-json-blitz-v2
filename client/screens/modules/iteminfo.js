@@ -89,10 +89,13 @@ const iteminfo = {
       .addClass("tooltip")
       .attr("id", `itemid${obj.id}`)
       .css({
+        cursor: "pointer",
         color: "ghostwhite",
         "font-family": "Alagard",
         "font-size": "2vw",
         "text-align": "center",
+        "text-decoration": "none",
+        border: "none",
       })
       .text(`${obj.name}`)
       .append(

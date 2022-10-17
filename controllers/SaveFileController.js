@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const authCheck = require("../middleware/authCheck");
 
-const Mods = require("../models/ModSchema");
 const User = require("../models/UserSchema");
 
 router.post("/", authCheck, async (req, res) => {

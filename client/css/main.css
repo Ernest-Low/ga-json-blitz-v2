@@ -67,11 +67,9 @@
 .tooltip .tooltipbox {
   visibility: hidden;
   width: 18rem;
-  /* background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 6px; */
   padding: 1.2rem 0.8rem 0.8rem 0.8rem;
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   bottom: 100%;
   left: 50%;
   margin-left: -60px;

@@ -219,9 +219,12 @@ const selectchar = {
             current_entities.players[0].name =
               $inputname.val().trim() || this.selected_hero.name;
 
-            //! Giving a healthpot to begin (id 4001)
+            //! Giving 2 healthpots (id 4001) and 1 manapot (id 4003) to begin
             const starting_item = items.filter((z) => z.id == 4001);
             current_entities.items.push(structuredClone(starting_item[0]));
+            current_entities.items.push(structuredClone(starting_item[0]));
+            const starting_item_2 = items.filter((z) => z.id == 4003);
+            current_entities.items.push(structuredClone(starting_item_2[0]));
 
             //! Declaring castle zone (temp)
             const current_zone = zones.filter((z) => z.name == "Castle")[0];

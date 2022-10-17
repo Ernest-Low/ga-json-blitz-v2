@@ -5,6 +5,10 @@ import player_actions from "../scene_control/playeractions.js";
 import current_entities from "../entities.js";
 import actionSkills from "./actionSkills.js";
 import create_actionText from "./create_actiontext.js";
+import iteminfo from "./iteminfo.js";
+import itemusage from "./itemusage.js";
+
+import redrectangle from "/assets/ui/redrectangle.png";
 
 const $actions = () => {
   //  CSS For Buttons
@@ -20,6 +24,8 @@ const $actions = () => {
     "font-family": "Alagard",
   };
 
+  let items_open = false;
+
   //  Basic Attack
   const $attack = $("<button>")
     .attr("id", "btnattack")
@@ -29,6 +35,17 @@ const $actions = () => {
     .on("click", () => {
       console.log("Attacking");
       if (current_entities.current_turn == "player") {
+        if (current_entities.skillbar_status == true) {
+          $("#skillscontainer").remove();
+          create_actionText();
+          current_entities.skillbar_status = false;
+        }
+        if (items_open == true) {
+          $("#itemlistbox").remove();
+          create_actionText();
+          items_open = false;
+        }
+        create_actionText();
         player_actions.player_attack(
           current_entities.players[current_entities.currentplayer],
           current_entities.monsters[current_entities.currentmonster]
@@ -46,6 +63,10 @@ const $actions = () => {
       console.log("Using a skill");
       if (current_entities.current_turn == "player") {
         if (current_entities.skillbar_status == false) {
+          if (items_open == true) {
+            $("#itemlistbox").remove();
+            items_open = false;
+          }
           console.log("removing text and enabling skills");
           $("#actiontext").remove();
           actionSkills();
@@ -59,6 +80,77 @@ const $actions = () => {
       }
     });
 
+  //* Let's make arrows to go through the entries (view sets of 4)
+  //? Potentially stack items
+  const create_items = () => {
+    //  List of items
+    const $itemlistbox = $("<div>").attr("id", "itemlistbox").css({
+      width: "50vw",
+      height: "500%",
+      position: "absolute",
+      display: "flex",
+      "flex-direction": "column",
+      "z-index": 3,
+    });
+
+    const $itemslist = $("<div>").attr("id", "actionitemlist").css({
+      width: "50vw",
+      height: "4%",
+      margin: "1vw 1vw 1vw 1vw",
+      display: "flex",
+      // "background-color": "blue",
+      // translate: "10vw 0",
+      "align-self": "flex-end",
+      "justify-content": "flex-start",
+      gap: "0.5vw 1vw",
+      "flex-flow": "row wrap",
+      "text-align": "center",
+      // overflow: "auto",
+    });
+
+    const consumables = current_entities.items.filter(
+      (item) => item.id >= 4001 && item.id <= 5000
+    );
+
+    consumables.forEach((item) => {
+      const $itembox = $("<div>")
+        .css({
+          width: "45%",
+          height: "45%",
+          "background-image": `url("${redrectangle}")`,
+          "background-size": "100% 100%",
+          "background-repeat": "no-repeat",
+          "object-fit": "contain",
+          "align-items": "center",
+        })
+        .on("click", () => {
+          //* Item on click event
+          console.log(item.name);
+          $itemlistbox.remove();
+          create_actionText();
+          itemusage.itemretrieve(item);
+        })
+        .append(
+          $("<div>")
+            .addClass("actionbutton")
+            .css({
+              width: "100%",
+              height: "100%",
+            })
+            .append(
+              iteminfo.item_link(item).addClass("divbutton").css({
+                //  translate: "0 -1vw",
+                "font-size": "1.5vw",
+              })
+            )
+        );
+
+      $itemslist.append($itembox);
+    });
+    $itemlistbox.append($itemslist);
+    $("#longpanel").append($itemlistbox);
+  };
+
   //  Open Items
   const $items = $("<button>")
     .attr("id", "btnitems")
@@ -66,7 +158,21 @@ const $actions = () => {
     .css(button_css)
     .text("ITEMS")
     .on("click", () => {
-      console.log("Using a item");
+      console.log("Using an item");
+      if (items_open == false && current_entities.current_turn == "player") {
+        items_open = true;
+        if (current_entities.skillbar_status == true) {
+          $("#skillscontainer").remove();
+          current_entities.skillbar_status = false;
+        } else {
+          $("#actiontext").remove();
+        }
+        create_items();
+      } else {
+        $("#actionitemlist").remove();
+        create_actionText();
+        items_open = false;
+      }
     });
 
   //  Run away?!

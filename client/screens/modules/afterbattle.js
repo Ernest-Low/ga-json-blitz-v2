@@ -264,7 +264,6 @@ const afterBattle = {
       items_gained.forEach((obj) => {
         $itemslist.append(iteminfo.item_link(obj));
       });
-
       $itemdrop.append($itemtext, $itemslist);
     }
 
