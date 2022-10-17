@@ -24,8 +24,6 @@ const $actions = () => {
     "font-family": "Alagard",
   };
 
-  let items_open = false;
-
   //  Basic Attack
   const $attack = $("<button>")
     .attr("id", "btnattack")
@@ -40,10 +38,10 @@ const $actions = () => {
           create_actionText();
           current_entities.skillbar_status = false;
         }
-        if (items_open == true) {
+        if (current_entities.itemsbar_status == true) {
           $("#itemlistbox").remove();
           create_actionText();
-          items_open = false;
+          current_entities.itemsbar_status = false;
         }
         create_actionText();
         player_actions.player_attack(
@@ -63,9 +61,9 @@ const $actions = () => {
       console.log("Using a skill");
       if (current_entities.current_turn == "player") {
         if (current_entities.skillbar_status == false) {
-          if (items_open == true) {
+          if (current_entities.itemsbar_status == true) {
             $("#itemlistbox").remove();
-            items_open = false;
+            current_entities.itemsbar_status = false;
           }
           console.log("removing text and enabling skills");
           $("#actiontext").remove();
@@ -159,8 +157,11 @@ const $actions = () => {
     .text("ITEMS")
     .on("click", () => {
       console.log("Using an item");
-      if (items_open == false && current_entities.current_turn == "player") {
-        items_open = true;
+      if (
+        current_entities.itemsbar_status == false &&
+        current_entities.current_turn == "player"
+      ) {
+        current_entities.itemsbar_status = true;
         if (current_entities.skillbar_status == true) {
           $("#skillscontainer").remove();
           current_entities.skillbar_status = false;
@@ -171,7 +172,7 @@ const $actions = () => {
       } else {
         $("#actionitemlist").remove();
         create_actionText();
-        items_open = false;
+        current_entities.itemsbar_status = false;
       }
     });
 

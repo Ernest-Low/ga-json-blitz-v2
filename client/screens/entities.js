@@ -24,7 +24,9 @@ const current_entities = {
   current_turn: "player",
   fight_status: "",
   skillbar_status: false,
+  itemsbar_status: false,
   account_window: false,
+
 };
 
 export default current_entities;

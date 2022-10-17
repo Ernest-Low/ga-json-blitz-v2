@@ -87,6 +87,7 @@ const selectchar = {
         .addClass("character")
         .attr("id", `pchar${character.d_id}`)
         .css({
+          cursor: "pointer",
           margin: "30vw 0 0 66vw",
           //   width: "100%",
           width: "10vw",
