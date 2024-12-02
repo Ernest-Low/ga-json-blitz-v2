@@ -39,4 +39,4 @@ This project is an enhanced version of the [first game](https://github.com/Ernes
 - `axios` (HTTP Client)
 - `gsap` (Green Sock Animation Platform (GSAP))
 
-## Credit for drawing the images / assets goes to my good friend Siddharth Karmakar
+# Credit for all the image assets used goes to my good friend `Siddharth Karmakar`, they're all original work made for this project.
