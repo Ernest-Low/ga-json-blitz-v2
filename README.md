@@ -38,3 +38,5 @@ This project is an enhanced version of the [first game](https://github.com/Ernes
 - `dotenv` (Environment variables)
 - `axios` (HTTP Client)
 - `gsap` (Green Sock Animation Platform (GSAP))
+
+## Credit for drawing the images / assets goes to my good friend Siddharth Karmakar
